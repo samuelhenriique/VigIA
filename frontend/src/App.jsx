@@ -3,6 +3,8 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './routes/PrivateRoute'
 import AppLayout from './layouts/AppLayout'
+import Ocorrencias from './pages/Ocorrencias'
+import Viaturas from './pages/Viaturas'
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
           </PrivateRoute>
           }>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/ocorrencias" element={<Ocorrencias />} />
+            <Route path="/viaturas" element={<Viaturas />} />
           </Route>
       </Routes>
     </BrowserRouter>
