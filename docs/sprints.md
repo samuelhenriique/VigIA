@@ -147,7 +147,7 @@ Criar a interface inicial do sistema, com dashboard, listagem de ocorrencias, li
 | S3-15 | Criar listagem de ocorrencias integrada com `GET /api/occurrences`. | Concluido |
 | S3-16 | Criar listagem de viaturas integrada com `GET /api/vehicles`. | Concluido |
 | S3-17 | Executar build do frontend para validar a compilacao. | Concluido |
-| S3-18 | Revisar fluxo completo de navegacao, logout e telas internas. | Pendente |
+| S3-18 | Revisar fluxo completo de navegacao, logout e telas internas. | Concluido |
 
 ### Entregaveis Esperados
 
@@ -260,7 +260,7 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 ## 10. Status Atual
 
-Em 01/07/2026, o projeto esta com a Sprint 1 e a Sprint 2 concluidas, e a Sprint 3 em desenvolvimento antecipado.
+Em 01/07/2026, o projeto esta com a Sprint 1, a Sprint 2 e a Sprint 3 concluidas.
 
 Ja foram concluidos:
 
@@ -295,10 +295,11 @@ Ja foram concluidos:
 - Listagem de ocorrencias integrada com `GET /api/occurrences`.
 - Listagem de viaturas integrada com `GET /api/vehicles`.
 - Build do frontend validado com `npm run build`.
+- Revisao final do fluxo de login, dashboard, ocorrencias, viaturas, logout e rotas protegidas.
 
 Proximas tarefas:
 
-1. Revisar o fluxo completo da Sprint 3: login, dashboard, ocorrencias, viaturas, logout e rotas protegidas.
-2. Ajustar detalhes visuais e de navegacao encontrados durante os testes manuais.
-3. Atualizar o status da tarefa S3-18 apos a revisao final do fluxo.
-4. Commitar e enviar as alteracoes da Sprint 3 para o repositorio remoto.
+1. Iniciar a Sprint 4 com a integracao do mapa interativo.
+2. Exibir ocorrencias e viaturas no mapa usando latitude e longitude.
+3. Criar filtros por status, prioridade, tipo e regiao.
+4. Criar endpoint de viaturas disponiveis e sugestao da viatura mais proxima.
