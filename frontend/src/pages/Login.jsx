@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api/client'
 
@@ -9,6 +9,14 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+
+        if (token) {
+          navigate('/dashboard')
+        }
+  }, [navigate])
 
     async function handleSubmit(event) {
     event.preventDefault()

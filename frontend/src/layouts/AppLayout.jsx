@@ -1,14 +1,21 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import api from "../api/client";
 
 export default function AppLayout() {
     const navigate = useNavigate()
 
- function handleLogout() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('token_type')
-    localStorage.removeItem('user')
+ async function handleLogout() {
+    try {
+        await api.post('/logout')
+    } catch (error) {
+        console.error(error)
+    } finally {
+        localStorage.removeItem('token')
+        localStorage.removeItem('token_type')
+        localStorage.removeItem('user')
 
-    navigate('/login')
+        navigate('/login')
+    }
  }
 
     return (
