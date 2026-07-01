@@ -124,18 +124,59 @@ A Sprint 2 sera considerada concluida quando:
 
 ### Objetivo
 
-Criar a interface inicial do sistema, com dashboard, listagem de ocorrencias, listagem de viaturas e integracao com a API.
+Criar a interface inicial do sistema, com dashboard, listagem de ocorrencias, listagem de viaturas e integracao com a API Laravel.
 
 ### Tarefas Previstas
 
-- Configurar React no diretório `frontend`.
-- Configurar TailwindCSS.
-- Criar layout principal.
-- Criar tela de login.
-- Criar tela de dashboard.
-- Criar listagem de ocorrencias.
-- Criar listagem de viaturas.
-- Integrar frontend com API Laravel.
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S3-01 | Configurar React no diretorio `frontend` com Vite. | Concluido |
+| S3-02 | Instalar e configurar TailwindCSS. | Concluido |
+| S3-03 | Instalar bibliotecas de apoio: Axios, React Router e Lucide React. | Concluido |
+| S3-04 | Criar cliente Axios em `src/api/client.js`. | Concluido |
+| S3-05 | Criar tela de login. | Concluido |
+| S3-06 | Integrar login com `POST /api/login`. | Concluido |
+| S3-07 | Salvar token Bearer, tipo do token e usuario no `localStorage`. | Concluido |
+| S3-08 | Configurar envio automatico do token nas requisicoes protegidas. | Concluido |
+| S3-09 | Configurar rotas com React Router. | Concluido |
+| S3-10 | Criar rota protegida com `PrivateRoute`. | Concluido |
+| S3-11 | Impedir usuario autenticado de retornar para a tela de login. | Concluido |
+| S3-12 | Criar layout principal com navegacao e logout. | Concluido |
+| S3-13 | Integrar logout com `POST /api/logout`. | Concluido |
+| S3-14 | Criar dashboard integrado com `GET /api/dashboard/summary`. | Concluido |
+| S3-15 | Criar listagem de ocorrencias integrada com `GET /api/occurrences`. | Concluido |
+| S3-16 | Criar listagem de viaturas integrada com `GET /api/vehicles`. | Concluido |
+| S3-17 | Executar build do frontend para validar a compilacao. | Concluido |
+| S3-18 | Revisar fluxo completo de navegacao, logout e telas internas. | Pendente |
+
+### Entregaveis Esperados
+
+- Projeto React criado no diretorio `frontend`.
+- TailwindCSS configurado.
+- Cliente Axios configurado para a API Laravel.
+- Tela de login funcional.
+- Autenticacao integrada com Laravel Sanctum.
+- Token Bearer salvo e enviado automaticamente nas requisicoes.
+- Rotas protegidas no frontend.
+- Layout principal com navegacao entre telas internas.
+- Dashboard com dados reais da API.
+- Listagem de ocorrencias com dados reais da API.
+- Listagem de viaturas com dados reais da API.
+
+### Criterios de Aceite
+
+A Sprint 3 sera considerada concluida quando:
+
+- O frontend executar localmente com `npm run dev`.
+- O build do frontend executar com sucesso usando `npm run build`.
+- A tela de login autenticar com `admin@vigia.local` e senha `password`.
+- O token retornado pela API for salvo no `localStorage`.
+- As rotas internas redirecionarem para `/login` quando nao houver token.
+- O usuario autenticado for redirecionado de `/login` para `/dashboard`.
+- O dashboard exibir os totais retornados por `GET /api/dashboard/summary`.
+- A tela de ocorrencias listar os registros de `GET /api/occurrences`.
+- A tela de viaturas listar os registros de `GET /api/vehicles`.
+- O logout encerrar a sessao local e retornar para `/login`.
 
 ## 6. Sprint 4 - Mapa e Geolocalizacao
 
@@ -219,7 +260,7 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 ## 10. Status Atual
 
-Em 25/06/2026, o projeto concluiu tecnicamente a Sprint 2 de forma antecipada.
+Em 01/07/2026, o projeto esta com a Sprint 1 e a Sprint 2 concluidas, e a Sprint 3 em desenvolvimento antecipado.
 
 Ja foram concluidos:
 
@@ -241,9 +282,23 @@ Ja foram concluidos:
 - Endpoint `GET /api/dashboard/summary`.
 - Smoke test da API com dados simulados.
 - Documentacao da API em `docs/api-sprint-2.md`.
+- Criacao do frontend React no diretorio `frontend`.
+- Configuracao do TailwindCSS.
+- Configuracao do cliente Axios para a API Laravel.
+- Tela de login integrada com `POST /api/login`.
+- Persistencia do token Bearer no `localStorage`.
+- Rotas protegidas no frontend com `PrivateRoute`.
+- Redirecionamento de usuario autenticado de `/login` para `/dashboard`.
+- Layout principal com navegacao entre telas internas.
+- Logout integrado com `POST /api/logout`.
+- Dashboard integrado com `GET /api/dashboard/summary`.
+- Listagem de ocorrencias integrada com `GET /api/occurrences`.
+- Listagem de viaturas integrada com `GET /api/vehicles`.
+- Build do frontend validado com `npm run build`.
 
 Proximas tarefas:
 
-1. Criar uma colecao Postman ou Insomnia para facilitar testes manuais.
-2. Iniciar Sprint 3 com React.
-3. Criar tela de login e integrar com `POST /api/login`.
+1. Revisar o fluxo completo da Sprint 3: login, dashboard, ocorrencias, viaturas, logout e rotas protegidas.
+2. Ajustar detalhes visuais e de navegacao encontrados durante os testes manuais.
+3. Atualizar o status da tarefa S3-18 apos a revisao final do fluxo.
+4. Commitar e enviar as alteracoes da Sprint 3 para o repositorio remoto.
