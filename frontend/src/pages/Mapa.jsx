@@ -58,6 +58,9 @@ export default function Mapa() {
   const [occurrenceTypes, setOccurrenceTypes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [suggestion, setSuggestion] = useState(null)
+  const [suggestionLoading, setSuggestionLoading] = useState(false)
+  const [suggestionError, setSuggestionError] = useState('')
 
   const [filters, setFilters] = useState({
     occurrenceStatus: '',
@@ -145,6 +148,22 @@ export default function Mapa() {
       regionId: '',
       vehicleStatus: '',
     })
+  }
+
+  async function handleSuggestVehicle(occurrenceId) {
+    setSuggestionLoading(true)
+    setSuggestionError('')
+    setSuggestion(null)
+
+    try {
+      const response = await api.get(`/occurrences/${occurrenceId}/suggest-vehicle`)
+      setSuggestion(response.data)
+    } catch (error) {
+      console.error(error)
+      setSuggestionError('Nao foi possivel sugerir uma viatura para esta ocorrencia.')
+    } finally {
+      setSuggestionLoading(false)
+    }
   }
 
   if (loading) {
@@ -333,6 +352,14 @@ export default function Mapa() {
                   <p>Prioridade: {occurrence.ai_priority ?? 'Nao definida'}</p>
                   <p>Tipo: {occurrence.occurrence_type?.name ?? 'Nao informado'}</p>
                   <p>Regiao: {occurrence.region?.name ?? 'Nao informada'}</p>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSuggestVehicle(occurrence.id)}
+                    className="mt-2 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+                  >
+                    Sugerir viatura
+                  </button>
                 </div>
               </Popup>
             </CircleMarker>
@@ -365,6 +392,52 @@ export default function Mapa() {
           ))}
         </MapContainer>
       </section>
+
+      {suggestionLoading && (
+        <p className="mt-4 text-sm text-slate-600">
+          Buscando viatura mais proxima...
+        </p>
+      )}
+
+      {suggestionError && (
+        <p className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {suggestionError}
+        </p>
+      )}
+
+      {suggestion?.suggested_vehicle && (
+        <section className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+          <h2 className="text-sm font-semibold text-blue-900">
+            Viatura sugerida para {suggestion.occurrence.code}
+          </h2>
+
+          <div className="mt-3 grid gap-3 text-sm text-blue-900 md:grid-cols-4">
+            <p>
+              <span className="block font-medium">Viatura</span>
+              {suggestion.suggested_vehicle.code}
+            </p>
+
+            <p>
+              <span className="block font-medium">Equipe</span>
+              {suggestion.suggested_vehicle.team_name}
+            </p>
+
+            <p>
+              <span className="block font-medium">Distancia</span>
+              {suggestion.suggested_vehicle.distance_km} km
+            </p>
+
+            <p>
+              <span className="block font-medium">Chegada estimada</span>
+              {suggestion.suggested_vehicle.estimated_arrival_minutes} min
+            </p>
+          </div>
+
+          <p className="mt-3 text-xs text-blue-800">
+            {suggestion.criteria}
+          </p>
+        </section>
+      )}
 
       <div className="mt-4 flex flex-wrap gap-3 text-xs text-slate-600">
         <span className="rounded-full bg-green-100 px-3 py-1 text-green-800">

@@ -190,13 +190,42 @@ Adicionar mapa interativo, visualizacao geografica das ocorrencias e viaturas, f
 
 ### Tarefas Previstas
 
-- Integrar Leaflet ao frontend.
-- Exibir ocorrencias no mapa.
-- Exibir viaturas no mapa.
-- Criar filtros por status, prioridade, tipo e regiao.
-- Criar endpoint para buscar viaturas disponiveis.
-- Criar calculo inicial de distancia.
-- Sugerir viatura mais proxima disponivel.
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S4-01 | Integrar Leaflet ao frontend. | Concluido |
+| S4-02 | Exibir ocorrencias no mapa. | Concluido |
+| S4-03 | Exibir viaturas no mapa. | Concluido |
+| S4-04 | Criar filtros por status, prioridade, tipo e regiao. | Concluido |
+| S4-05 | Criar endpoint para buscar viaturas disponiveis. | Concluido |
+| S4-06 | Criar calculo inicial de distancia. | Concluido |
+| S4-07 | Sugerir viatura mais proxima disponivel. | Concluido |
+| S4-08 | Integrar sugestao de viatura no mapa. | Concluido |
+| S4-09 | Validar fluxo completo da Sprint 4. | Concluido |
+
+### Entregaveis Esperados
+
+- Leaflet e React Leaflet integrados ao frontend.
+- Tela de mapa operacional criada.
+- Ocorrencias exibidas no mapa usando latitude e longitude.
+- Viaturas exibidas no mapa usando latitude e longitude.
+- Filtros por status, prioridade, tipo, regiao e status da viatura.
+- Endpoint `GET /api/vehicles/available`.
+- Endpoint `GET /api/occurrences/{id}/suggest-vehicle`.
+- Calculo inicial de distancia entre ocorrencia e viatura.
+- Painel de sugestao de viatura integrado ao mapa.
+
+### Criterios de Aceite
+
+A Sprint 4 sera considerada concluida quando:
+
+- A tela `/mapa` estiver disponivel apenas para usuarios autenticados.
+- O mapa exibir ocorrencias e viaturas com base nas coordenadas cadastradas.
+- Os filtros alterarem os marcadores exibidos no mapa.
+- O endpoint `GET /api/vehicles/available` retornar somente viaturas ativas e disponiveis.
+- O endpoint `GET /api/occurrences/{id}/suggest-vehicle` retornar a viatura disponivel mais proxima.
+- A sugestao de viatura aparecer na interface do mapa.
+- O build do frontend executar com sucesso usando `npm run build`.
+- O fluxo de mapa, filtros e sugestao de viatura for validado manualmente.
 
 ## 7. Sprint 5 - Microservico de IA
 
@@ -260,7 +289,7 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 ## 10. Status Atual
 
-Em 01/07/2026, o projeto esta com a Sprint 1, a Sprint 2 e a Sprint 3 concluidas.
+Em 01/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3 e a Sprint 4 antecipada concluidas.
 
 Ja foram concluidos:
 
@@ -296,10 +325,19 @@ Ja foram concluidos:
 - Listagem de viaturas integrada com `GET /api/vehicles`.
 - Build do frontend validado com `npm run build`.
 - Revisao final do fluxo de login, dashboard, ocorrencias, viaturas, logout e rotas protegidas.
+- Integracao do Leaflet e React Leaflet no frontend.
+- Criacao da tela `/mapa`.
+- Exibicao de ocorrencias e viaturas no mapa.
+- Filtros do mapa por status, prioridade, tipo, regiao e status da viatura.
+- Endpoint `GET /api/vehicles/available`.
+- Endpoint `GET /api/occurrences/{id}/suggest-vehicle`.
+- Calculo inicial de distancia entre ocorrencia e viatura.
+- Sugestao da viatura disponivel mais proxima.
+- Integracao da sugestao de viatura no mapa.
+- Validacao manual do fluxo completo da Sprint 4.
 
 Proximas tarefas:
 
-1. Iniciar a Sprint 4 com a integracao do mapa interativo.
-2. Exibir ocorrencias e viaturas no mapa usando latitude e longitude.
-3. Criar filtros por status, prioridade, tipo e regiao.
-4. Criar endpoint de viaturas disponiveis e sugestao da viatura mais proxima.
+1. Commitar e enviar as alteracoes finais da Sprint 4 para o repositorio remoto.
+2. Revisar o escopo da Sprint 5 antes de iniciar o microservico de IA.
+3. Iniciar a Sprint 5 com a configuracao do projeto Python em `ai-service`.
