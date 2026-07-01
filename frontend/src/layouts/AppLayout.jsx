@@ -54,6 +54,13 @@ export default function AppLayout() {
               Viaturas
             </Link>
 
+            <Link
+              to="/mapa"
+              className="font-medium text-slate-700 hover:text-blue-700"
+            >
+              Mapa
+            </Link>
+
             <button
               type="button"
               onClick={handleLogout}

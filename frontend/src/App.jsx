@@ -5,6 +5,7 @@ import PrivateRoute from './routes/PrivateRoute'
 import AppLayout from './layouts/AppLayout'
 import Ocorrencias from './pages/Ocorrencias'
 import Viaturas from './pages/Viaturas'
+import Mapa from './pages/Mapa'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/ocorrencias" element={<Ocorrencias />} />
             <Route path="/viaturas" element={<Viaturas />} />
+            <Route path="/mapa" element={<Mapa />} />
           </Route>
       </Routes>
     </BrowserRouter>
