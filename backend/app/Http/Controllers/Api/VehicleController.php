@@ -92,6 +92,18 @@ class VehicleController extends Controller
         return response()->noContent();
     }
 
+    public function available()
+    {
+            $vehicles = Vehicle::query()
+                ->with('region:id,name,city,state,risk_level')
+                ->where('status', 'disponivel')
+                ->where('active', true)
+                ->orderBy('code')
+                ->get();
+
+            return response()->json($vehicles);
+    }
+
     private function updateGeom(Vehicle $vehicle): void
     {
         DB::statement(
