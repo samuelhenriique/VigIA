@@ -239,13 +239,55 @@ Criar o microservico em FastAPI para sugerir prioridade de ocorrencias e registr
 
 ### Tarefas Previstas
 
-- Configurar projeto Python em `ai-service`.
-- Criar API FastAPI.
-- Criar endpoint de predicao de prioridade.
-- Criar modelo inicial baseado em regras.
-- Preparar base simulada para treinamento.
-- Evoluir para modelo simples com Scikit-learn.
-- Integrar Laravel com FastAPI.
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S5-01 | Documentar escopo tecnico da Sprint 5. | Concluido |
+| S5-02 | Configurar projeto Python em `ai-service`. | Pendente |
+| S5-03 | Criar API FastAPI. | Pendente |
+| S5-04 | Criar endpoint `POST /predict-priority`. | Pendente |
+| S5-05 | Criar schemas de entrada e saida com Pydantic. | Pendente |
+| S5-06 | Criar modelo inicial baseado em regras `rules-v1`. | Pendente |
+| S5-07 | Retornar prioridade, risco, confianca, modelo e explicacao. | Pendente |
+| S5-08 | Preparar base simulada para treinamento. | Pendente |
+| S5-09 | Evoluir para modelo simples com Scikit-learn. | Pendente |
+| S5-10 | Integrar Laravel com FastAPI. | Pendente |
+| S5-11 | Registrar predicoes em `ai_predictions`. | Pendente |
+| S5-12 | Atualizar `occurrences.ai_priority` com a sugestao da IA. | Pendente |
+| S5-13 | Validar fluxo completo da Sprint 5. | Pendente |
+
+### Entregaveis Esperados
+
+- Documento tecnico da Sprint 5 em `docs/sprint-05-microservico-ia.md`.
+- Projeto Python criado no diretorio `ai-service`.
+- API FastAPI executando localmente.
+- Endpoint `POST /predict-priority`.
+- Modelo inicial de classificacao baseado em regras.
+- Resposta contendo prioridade sugerida, pontuacao de risco, confianca, modelo e explicacao.
+- Integracao do Laravel com o FastAPI.
+- Registro da predicao na tabela `ai_predictions`.
+- Atualizacao do campo `occurrences.ai_priority`.
+
+### Criterios de Aceite
+
+A Sprint 5 sera considerada concluida quando:
+
+- O `ai-service` executar localmente na porta `8001`.
+- A documentacao automatica do FastAPI estiver acessivel em `/docs`.
+- O endpoint `POST /predict-priority` aceitar dados de uma ocorrencia.
+- O endpoint retornar apenas prioridades validas: `baixa`, `media`, `alta` ou `critica`.
+- O modelo `rules-v1` classificar ocorrencias com base em tipo, descricao, gravidade e regiao.
+- O Laravel conseguir chamar o microservico FastAPI.
+- A resposta da IA for registrada em `ai_predictions`.
+- O campo `occurrences.ai_priority` for atualizado com a prioridade sugerida.
+- O fluxo for validado com exemplos de prioridade baixa, media, alta e critica.
+
+### Documentacao Tecnica
+
+A documentacao detalhada da Sprint 5 esta em:
+
+```text
+docs/sprint-05-microservico-ia.md
+```
 
 ## 8. Sprint 6 - Alertas, Graficos e Validacao
 
