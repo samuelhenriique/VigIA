@@ -32,8 +32,8 @@ Preparar a base do projeto para desenvolvimento, definindo escopo, requisitos, m
 |---|---|---|
 | S1-01 | Criar estrutura de pastas do projeto. | Concluido |
 | S1-02 | Criar arquivo `README.md`. | Concluido |
-| S1-03 | Criar documento de requisitos em `docs/requisitos.md`. | Concluido |
-| S1-04 | Criar modelagem do banco em `docs/modelagem-banco.md`. | Concluido |
+| S1-03 | Criar documento de requisitos em `docs/sprint-01/requisitos.md`. | Concluido |
+| S1-04 | Criar modelagem do banco em `docs/sprint-01/modelagem-banco.md`. | Concluido |
 | S1-05 | Criar banco `vigia_db` no PostgreSQL. | Concluido |
 | S1-06 | Instalar e ativar PostGIS no banco. | Concluido |
 | S1-07 | Criar script `database/schema.sql`. | Concluido |
@@ -99,7 +99,7 @@ Criar a API principal do sistema em Laravel, conectada ao PostgreSQL, com rotas 
 - Conexao com PostgreSQL funcionando.
 - Endpoints principais funcionando.
 - Autenticacao inicial configurada.
-- Documentacao da API em `docs/api-sprint-2.md`.
+- Documentacao da API em `docs/sprint-02/api.md`.
 
 ### Criterios de Aceite
 
@@ -178,6 +178,14 @@ A Sprint 3 sera considerada concluida quando:
 - A tela de viaturas listar os registros de `GET /api/vehicles`.
 - O logout encerrar a sessao local e retornar para `/login`.
 
+### Documentacao Tecnica
+
+A documentacao detalhada da Sprint 3 esta em:
+
+```text
+docs/sprint-03/frontend-react.md
+```
+
 ## 6. Sprint 4 - Mapa e Geolocalizacao
 
 ### Periodo
@@ -227,6 +235,14 @@ A Sprint 4 sera considerada concluida quando:
 - O build do frontend executar com sucesso usando `npm run build`.
 - O fluxo de mapa, filtros e sugestao de viatura for validado manualmente.
 
+### Documentacao Tecnica
+
+A documentacao detalhada da Sprint 4 esta em:
+
+```text
+docs/sprint-04/mapa-geolocalizacao.md
+```
+
 ## 7. Sprint 5 - Microservico de IA
 
 ### Periodo
@@ -257,7 +273,7 @@ Criar o microservico em FastAPI para sugerir prioridade de ocorrencias e registr
 
 ### Entregaveis Esperados
 
-- Documento tecnico da Sprint 5 em `docs/sprint-05-microservico-ia.md`.
+- Documento tecnico da Sprint 5 em `docs/sprint-05/microservico-ia.md`.
 - Projeto Python criado no diretorio `ai-service`.
 - API FastAPI executando localmente.
 - Endpoint `POST /predict-priority`.
@@ -286,7 +302,7 @@ A Sprint 5 sera considerada concluida quando:
 A documentacao detalhada da Sprint 5 esta em:
 
 ```text
-docs/sprint-05-microservico-ia.md
+docs/sprint-05/microservico-ia.md
 ```
 
 ## 8. Sprint 6 - Alertas, Graficos e Validacao
@@ -352,7 +368,7 @@ Ja foram concluidos:
 - Rotas protegidas por token Bearer.
 - Endpoint `GET /api/dashboard/summary`.
 - Smoke test da API com dados simulados.
-- Documentacao da API em `docs/api-sprint-2.md`.
+- Documentacao da API em `docs/sprint-02/api.md`.
 - Criacao do frontend React no diretorio `frontend`.
 - Configuracao do TailwindCSS.
 - Configuracao do cliente Axios para a API Laravel.

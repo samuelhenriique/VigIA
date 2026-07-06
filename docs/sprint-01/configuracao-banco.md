@@ -271,5 +271,5 @@ Se os dados estao funcionando, nao precisa executar o `schema.sql` novamente.
 
 - `database/schema.sql`
 - `database/seed.sql`
-- `docs/modelagem-banco.md`
-- `docs/requisitos.md`
+- `docs/sprint-01/modelagem-banco.md`
+- `docs/sprint-01/requisitos.md`

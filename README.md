@@ -39,23 +39,37 @@ VigIA/
     schema.sql
     seed.sql
   docs/
-    api-sprint-2.md
-    configuracao-banco.md
-    modelagem-banco.md
-    requisitos.md
+    README.md
     sprints.md
+    sprint-01/
+      configuracao-banco.md
+      modelagem-banco.md
+      requisitos.md
+      revisao-escopo-mvp.md
+    sprint-02/
+      api.md
+    sprint-03/
+      frontend-react.md
+    sprint-04/
+      mapa-geolocalizacao.md
+    sprint-05/
+      microservico-ia.md
   frontend/
   README.md
 ```
 
 ## Documentacao
 
-- [Requisitos](docs/requisitos.md)
-- [Modelagem do banco](docs/modelagem-banco.md)
-- [Configuracao do banco](docs/configuracao-banco.md)
+- [Indice da documentacao](docs/README.md)
 - [Planejamento de sprints](docs/sprints.md)
-- [Revisao do escopo do MVP](docs/revisao-escopo-mvp.md)
-- [API Sprint 2](docs/api-sprint-2.md)
+- [Sprint 1 - Requisitos](docs/sprint-01/requisitos.md)
+- [Sprint 1 - Modelagem do banco](docs/sprint-01/modelagem-banco.md)
+- [Sprint 1 - Configuracao do banco](docs/sprint-01/configuracao-banco.md)
+- [Sprint 1 - Revisao do escopo do MVP](docs/sprint-01/revisao-escopo-mvp.md)
+- [Sprint 2 - API Laravel](docs/sprint-02/api.md)
+- [Sprint 3 - Frontend React](docs/sprint-03/frontend-react.md)
+- [Sprint 4 - Mapa e geolocalizacao](docs/sprint-04/mapa-geolocalizacao.md)
+- [Sprint 5 - Microservico de IA](docs/sprint-05/microservico-ia.md)
 
 ## Banco de Dados
 
@@ -75,7 +89,7 @@ Scripts principais:
 Para configurar o banco manualmente pelo pgAdmin, siga:
 
 ```text
-docs/configuracao-banco.md
+docs/sprint-01/configuracao-banco.md
 ```
 
 ## Backend Laravel
@@ -146,7 +160,7 @@ GET /api/dashboard/summary
 As rotas principais exigem token Bearer retornado pelo login. Mais detalhes estao em:
 
 ```text
-docs/api-sprint-2.md
+docs/sprint-02/api.md
 ```
 
 ## Status Atual

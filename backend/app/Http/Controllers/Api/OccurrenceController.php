@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class OccurrenceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index(Request $request)
     {
         $occurrences = Occurrence::query()
@@ -32,9 +30,6 @@ class OccurrenceController extends Controller
         return response()->json($occurrences);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreOccurrenceRequest $request)
     {
         $occurrence = Occurrence::create($request->validated());
@@ -47,9 +42,6 @@ class OccurrenceController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $occurrence = Occurrence::with([
@@ -61,9 +53,6 @@ class OccurrenceController extends Controller
         return response()->json($occurrence);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateOccurrenceRequest $request, string $id)
     {
         $occurrence = Occurrence::findOrFail($id);
@@ -78,9 +67,6 @@ class OccurrenceController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $occurrence = Occurrence::findOrFail($id);
