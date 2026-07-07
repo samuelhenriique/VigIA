@@ -20,6 +20,8 @@ vendor/
 
 # Logs and caches
 *.log
+__pycache__/
+*.py[cod]
 .phpunit.cache/
 .phpunit.result.cache
 
