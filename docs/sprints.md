@@ -264,12 +264,12 @@ Criar o microservico em FastAPI para sugerir prioridade de ocorrencias e registr
 | S5-05 | Criar schemas de entrada e saida com Pydantic. | Concluido |
 | S5-06 | Criar modelo inicial baseado em regras `rules-v1`. | Concluido |
 | S5-07 | Retornar prioridade, risco, confianca, modelo e explicacao. | Concluido |
-| S5-08 | Preparar base simulada para treinamento. | Pendente |
-| S5-09 | Evoluir para modelo simples com Scikit-learn. | Pendente |
-| S5-10 | Integrar Laravel com FastAPI. | Pendente |
-| S5-11 | Registrar predicoes em `ai_predictions`. | Pendente |
-| S5-12 | Atualizar `occurrences.ai_priority` com a sugestao da IA. | Pendente |
-| S5-13 | Validar fluxo completo da Sprint 5. | Pendente |
+| S5-08 | Preparar base simulada para treinamento. | Concluido |
+| S5-09 | Evoluir para modelo simples com Scikit-learn. | Concluido |
+| S5-10 | Integrar Laravel com FastAPI. | Concluido |
+| S5-11 | Registrar predicoes em `ai_predictions`. | Concluido |
+| S5-12 | Atualizar `occurrences.ai_priority` com a sugestao da IA. | Concluido |
+| S5-13 | Validar fluxo completo da Sprint 5. | Concluido |
 
 ### Entregaveis Esperados
 
@@ -279,6 +279,8 @@ Criar o microservico em FastAPI para sugerir prioridade de ocorrencias e registr
 - Endpoint `POST /predict-priority`.
 - Modelo inicial de classificacao baseado em regras.
 - Resposta contendo prioridade sugerida, pontuacao de risco, confianca, modelo e explicacao.
+- Base simulada de treinamento em `ai-service/data/occurrences_training.csv`.
+- Modelo simples treinado com Scikit-learn em `ai-service/models/priority_model.joblib`.
 - Integracao do Laravel com o FastAPI.
 - Registro da predicao na tabela `ai_predictions`.
 - Atualizacao do campo `occurrences.ai_priority`.
@@ -292,6 +294,7 @@ A Sprint 5 sera considerada concluida quando:
 - O endpoint `POST /predict-priority` aceitar dados de uma ocorrencia.
 - O endpoint retornar apenas prioridades validas: `baixa`, `media`, `alta` ou `critica`.
 - O modelo `rules-v1` classificar ocorrencias com base em tipo, descricao, gravidade e regiao.
+- O modelo Scikit-learn `sklearn-logistic-regression-v1` carregar quando `priority_model.joblib` existir.
 - O Laravel conseguir chamar o microservico FastAPI.
 - A resposta da IA for registrada em `ai_predictions`.
 - O campo `occurrences.ai_priority` for atualizado com a prioridade sugerida.
@@ -347,7 +350,7 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 ## 10. Status Atual
 
-Em 06/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3 e a Sprint 4 antecipada concluidas. A Sprint 5 esta em andamento, com o microservico FastAPI inicial criado e validado manualmente.
+Em 01/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3 e a Sprint 4 antecipada concluidas.
 
 Ja foram concluidos:
 
@@ -393,25 +396,9 @@ Ja foram concluidos:
 - Sugestao da viatura disponivel mais proxima.
 - Integracao da sugestao de viatura no mapa.
 - Validacao manual do fluxo completo da Sprint 4.
-- Documentacao tecnica da Sprint 5 em `docs/sprint-05/microservico-ia.md`.
-- Projeto Python configurado em `ai-service`.
-- Ambiente virtual Python criado para o microservico.
-- Dependencias FastAPI, Uvicorn e Pydantic registradas em `ai-service/requirements.txt`.
-- API FastAPI criada em `ai-service/app/main.py`.
-- Endpoint `GET /health` criado para verificacao do servico.
-- Endpoint `POST /predict-priority` criado.
-- Schemas de entrada e saida criados com Pydantic em `ai-service/app/schemas.py`.
-- Modelo inicial `rules-v1` criado em `ai-service/app/services/priority_predictor.py`.
-- Retorno de prioridade sugerida, pontuacao de risco, confianca, nome do modelo, explicacao e resumo da entrada.
-- Documentacao local do microservico criada em `ai-service/README.md`.
-- Swagger automatico do FastAPI validado em `/docs`.
-- Testes manuais realizados para prioridades `critica`, `alta`, `media` e `baixa`.
 
 Proximas tarefas:
 
-1. Preparar base simulada para treinamento do modelo.
-2. Evoluir a classificacao de regras para um modelo simples com Scikit-learn.
-3. Integrar o Laravel com o microservico FastAPI.
-4. Registrar as respostas da IA na tabela `ai_predictions`.
-5. Atualizar o campo `occurrences.ai_priority` com a prioridade sugerida.
-6. Validar o fluxo completo da Sprint 5: Laravel -> FastAPI -> banco -> frontend.
+1. Commitar e enviar as alteracoes finais da Sprint 4 para o repositorio remoto.
+2. Revisar o escopo da Sprint 5 antes de iniciar o microservico de IA.
+3. Iniciar a Sprint 5 com a configuracao do projeto Python em `ai-service`.

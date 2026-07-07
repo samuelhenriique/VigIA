@@ -17,6 +17,8 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('occurrences/{occurrence}/suggest-vehicle', [OccurrenceController::class, 'suggestVehicle']);
     Route::get('vehicles/available', [VehicleController::class, 'available']);
 
+    Route::post('occurrences/{occurrence}/predict-priority', [OccurrenceController::class, 'predictPriority']);
+
     Route::apiResource('occurrences', OccurrenceController::class);
     Route::apiResource('vehicles', VehicleController::class);
     Route::apiResource('regions', RegionController::class)->only(['index', 'show']);

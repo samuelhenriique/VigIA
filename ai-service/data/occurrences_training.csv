@@ -1,0 +1,11 @@
+tipo_ocorrencia,regiao,descricao,informed_severity,region_risk_level,priority
+Furto,Centro,Registro ficticio de furto de objeto em area comercial,2,4,media
+Roubo,Centro,Roubo de celular em via publica,3,3,alta
+Roubo,Centro,Individuo armado realizando roubo em andamento,4,5,critica
+Perturbacao,America,Som alto recorrente durante a madrugada,2,2,media
+Apoio,Centro,Solicitacao de apoio operacional sem risco imediato,1,1,baixa
+Agressao,Centro,Agressao fisica em via publica,4,4,alta
+Homicidio,Centro,Ocorrencia com morte confirmada no local,5,5,critica
+Suspeita,Trindade,Atividade suspeita em area residencial,2,3,media
+Orientacao,Centro,Solicitacao de orientacao sem risco imediato,1,2,baixa
+Violencia domestica,Continente,Ameaca em contexto de violencia domestica,4,4,alta

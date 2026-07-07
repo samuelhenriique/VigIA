@@ -10,6 +10,8 @@ use App\Models\Occurrence;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\AiPrediction;
+use Illuminate\Support\Facades\Http;
 
 class OccurrenceController extends Controller
 {
@@ -163,5 +165,57 @@ class OccurrenceController extends Controller
             'UPDATE occurrences SET geom = ST_SetSRID(ST_MakePoint(?, ?), 4326)::geography WHERE id = ?',
             [(float) $occurrence->longitude, (float) $occurrence->latitude, $occurrence->id]
         );
+    }
+
+    public function predictPriority(string $id)
+    {
+        $occurrence = Occurrence::with([
+            'occurrenceType:id,name,default_severity',
+            'region:id,name,city,state,risk_level',
+        ])->findOrFail($id);
+
+        $response = Http::timeout(5)->post(
+            config('services.ai_service.url') . '/predict-priority',
+            [
+                'occurrence_id' => $occurrence->id,
+                'tipo_ocorrencia' => $occurrence->occurrenceType->name,
+                'regiao' => $occurrence->region->name,
+                'descricao' => $occurrence->description ?? $occurrence->title,
+                'informed_severity' => $occurrence->informed_severity,
+                'region_risk_level' => $occurrence->region->risk_level,
+                'latitude' => (float) $occurrence->latitude,
+                'longitude' => (float) $occurrence->longitude,
+            ]
+        );
+
+        if ($response->failed()) {
+            return response()->json([
+                'message' => 'Nao foi possivel consultar o microservico de IA',
+                'details' => $response->json(),
+            ], 500);
+        }
+
+        $prediction = $response->json();
+        
+        $occurrence->update([
+            'ai_priority' => $prediction['predicted_priority']
+        ]);
+
+        $aiPrediction = AiPrediction::create([
+            'occurrence_id' => $occurrence->id,
+            'model_name' => $prediction['model_name'],
+            'predicted_priority' => $prediction['predicted_priority'],
+            'risk_score' => $prediction['risk_score'],
+            'confidence_score' => $prediction['confidence_score'],
+            'input_summary' => $prediction['input_summary'],
+            'explanation' => $prediction['explanation'] ?? null,
+            'created_at' => now(),
+        ]);
+
+        return response()->json([
+            'occurrence' => $occurrence->refresh()->load(['occurrenceType', 'region']),
+            'ai_prediction' => $aiPrediction,
+        ]);
+
     }
 }
