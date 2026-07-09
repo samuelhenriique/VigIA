@@ -327,6 +327,14 @@ Finalizar recursos inteligentes do MVP, incluindo alertas, graficos, mapa de ris
 - Testar fluxo completo: cadastro, IA, viatura, mapa, alerta e dashboard.
 - Corrigir erros encontrados.
 
+### Documentacao Tecnica
+
+A documentacao detalhada da Sprint 6 esta em:
+
+```text
+docs/sprint-06/alertas-graficos-validacao.md
+```
+
 ## 9. Sprint 7 - Fechamento e Apresentacao
 
 ### Periodo
