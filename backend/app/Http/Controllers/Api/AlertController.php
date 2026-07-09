@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alert;
+use App\Services\AlertGenerationService;
 use Illuminate\Http\Request;
 
 class AlertController extends Controller
@@ -24,5 +25,15 @@ class AlertController extends Controller
             ->get();
 
         return response()->json($alerts);
+    }
+
+    public function generate(AlertGenerationService $service)
+    {
+        $alerts = $service->generateSimilarOccurrenceAlerts();
+
+        return response()->json([
+            'created' => count($alerts),
+            'alerts' => $alerts,
+        ]);
     }
 }

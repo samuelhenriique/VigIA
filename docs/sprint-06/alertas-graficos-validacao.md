@@ -87,7 +87,7 @@ O Laravel continua sendo a API principal. O FastAPI segue responsavel apenas pel
 | S6-04 | Criar graficos no dashboard. | Concluido |
 | S6-05 | Criar listagem ou painel de alertas no frontend. | Concluido |
 | S6-06 | Criar endpoint `GET /api/alerts`. | Concluido |
-| S6-07 | Criar regra de alertas para ocorrencias semelhantes. | Pendente |
+| S6-07 | Criar regra de alertas para ocorrencias semelhantes. | Concluido |
 | S6-08 | Criar regra de alerta para ocorrencias criticas sem despacho. | Pendente |
 | S6-09 | Criar visualizacao de areas de risco no mapa. | Pendente |
 | S6-10 | Validar fluxo completo do MVP. | Pendente |
