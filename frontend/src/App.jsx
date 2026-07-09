@@ -6,6 +6,7 @@ import AppLayout from './layouts/AppLayout'
 import Ocorrencias from './pages/Ocorrencias'
 import Viaturas from './pages/Viaturas'
 import Mapa from './pages/Mapa'
+import Alertas from './pages/Alertas'
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/ocorrencias" element={<Ocorrencias />} />
             <Route path="/viaturas" element={<Viaturas />} />
             <Route path="/mapa" element={<Mapa />} />
+            <Route path="/alertas" element={<Alertas />} />
           </Route>
       </Routes>
     </BrowserRouter>

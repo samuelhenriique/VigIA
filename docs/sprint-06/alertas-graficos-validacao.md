@@ -82,11 +82,11 @@ O Laravel continua sendo a API principal. O FastAPI segue responsavel apenas pel
 | Codigo | Tarefa | Status inicial |
 |---|---|---|
 | S6-01 | Documentar escopo tecnico da Sprint 6. | Concluido |
-| S6-02 | Instalar Chart.js e integracao React. | Pendente |
-| S6-03 | Revisar endpoint `GET /api/dashboard/summary`. | Pendente |
-| S6-04 | Criar graficos no dashboard. | Pendente |
-| S6-05 | Criar listagem ou painel de alertas no frontend. | Pendente |
-| S6-06 | Criar endpoint `GET /api/alerts`. | Pendente |
+| S6-02 | Instalar Chart.js e integracao React. | Concluido |
+| S6-03 | Revisar endpoint `GET /api/dashboard/summary`. | Concluido |
+| S6-04 | Criar graficos no dashboard. | Concluido |
+| S6-05 | Criar listagem ou painel de alertas no frontend. | Concluido |
+| S6-06 | Criar endpoint `GET /api/alerts`. | Concluido |
 | S6-07 | Criar regra de alertas para ocorrencias semelhantes. | Pendente |
 | S6-08 | Criar regra de alerta para ocorrencias criticas sem despacho. | Pendente |
 | S6-09 | Criar visualizacao de areas de risco no mapa. | Pendente |
