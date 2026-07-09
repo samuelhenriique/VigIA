@@ -61,6 +61,13 @@ export default function AppLayout() {
               Mapa
             </Link>
 
+            <Link
+              to="/alertas"
+              className="font-medium text-slate-700 hover:text-blue-700"
+            >
+              Alertas
+            </Link>
+
             <button
               type="button"
               onClick={handleLogout}
