@@ -59,4 +59,9 @@ class Occurrence extends Model
     {
         return $this->hasMany(AiPrediction::class);
     }
+
+    public function dispatches(): HasMany
+    {
+        return $this->hasMany(Dispatch::class);
+    }
 }

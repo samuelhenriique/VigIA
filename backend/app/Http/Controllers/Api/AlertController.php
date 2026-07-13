@@ -29,6 +29,9 @@ class AlertController extends Controller
 
     public function generate(AlertGenerationService $service)
     {
+        $similarAlerts = $service->generateSimilarOccurrenceAlerts();
+        $criticalAlerts = $service->generateCriticalWithoutDispatchAlerts();
+
         $alerts = $service->generateSimilarOccurrenceAlerts();
 
         return response()->json([

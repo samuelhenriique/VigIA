@@ -98,4 +98,51 @@ class AlertGenerationService
             $first->region->name
         );
     }
+
+    public function generateCriticalWithoutDispatchAlerts(): array
+    {
+        $createdAlerts = [];
+
+        $occurrences = Occurrence::query()
+            ->with(['occurrenceType:id,name', 'region:id,name'])
+            ->where('status','aberta')
+            ->where('ai_priority', 'critica')
+            ->whereDoesntHave('dispatches', function ($query) {
+                $query->where('status', 'confirmado');
+            })
+            ->orderByDesc('occurred_at')
+            ->get();
+        
+        foreach ($occurrences as $occurrence) {
+            $existingAlert = Alert::query()
+                ->where('type', 'prioridade_critica')
+                ->where('occurrence_id', $occurrence->id)
+                ->where('status', '!=', 'resolvido')
+                ->exists();
+            
+            if ($existingAlert) {
+                continue;
+            }
+
+            $alert = Alert::create([
+                'occurrence_id' => $occurrence->id,
+                'type' => 'prioridade_critica',
+                'title' => sprintf(
+                    'Ocorrencia critica sem despacho em %s',
+                    $occurrence->region->name
+                ),
+                'description' => sprintf(
+                    'A ocorrencia %s foi classificada como critica pela IA e ainda nao possui despacho confirmado.',
+                    $occurrence->code
+                ),
+                'severity' => 'critico',
+                'status' => 'aberto',
+                'generated_by' => 'ia',
+            ]);
+
+            $createdAlerts[] = $alert->load('occurrence');
+    }
+
+        return $createdAlerts;
+    }
 }
