@@ -89,7 +89,7 @@ O Laravel continua sendo a API principal. O FastAPI segue responsavel apenas pel
 | S6-06 | Criar endpoint `GET /api/alerts`. | Concluido |
 | S6-07 | Criar regra de alertas para ocorrencias semelhantes. | Concluido |
 | S6-08 | Criar regra de alerta para ocorrencias criticas sem despacho. | Concluido |
-| S6-09 | Criar visualizacao de areas de risco no mapa. | Pendente |
+| S6-09 | Criar visualizacao de areas de risco no mapa. | Concluido |
 | S6-10 | Validar fluxo completo do MVP. | Pendente |
 | S6-11 | Corrigir erros encontrados na validacao. | Pendente |
 | S6-12 | Atualizar documentacao final da Sprint 6. | Pendente |
