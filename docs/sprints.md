@@ -347,18 +347,57 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 ### Tarefas Previstas
 
-- Revisar requisitos entregues.
-- Criar ou atualizar README final.
-- Documentar instalacao e execucao do projeto.
-- Documentar banco de dados.
-- Documentar limitacoes do MVP.
-- Preparar Canvas do projeto.
-- Preparar apresentacao.
-- Realizar teste geral de demonstracao.
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S7-01 | Revisar requisitos entregues no MVP. | Pendente |
+| S7-02 | Atualizar README final. | Em andamento |
+| S7-03 | Documentar instalacao e execucao do projeto. | Em andamento |
+| S7-04 | Documentar banco de dados. | Em andamento |
+| S7-05 | Documentar limitacoes do MVP. | Em andamento |
+| S7-06 | Preparar Canvas do projeto. | Em andamento |
+| S7-07 | Preparar apresentacao. | Em andamento |
+| S7-08 | Realizar teste geral de demonstracao. | Pendente |
+
+### Entregaveis Esperados
+
+- README principal atualizado.
+- Documentacao final de instalacao e execucao.
+- Documentacao final do banco de dados.
+- Documento de limitacoes do MVP.
+- Canvas do projeto.
+- Roteiro de apresentacao academica.
+- Checklist de demonstracao executado.
+
+### Criterios de Aceite
+
+A Sprint 7 sera considerada concluida quando:
+
+- A documentacao final estiver organizada em `docs/sprint-07`.
+- O README principal refletir o estado final do MVP.
+- O projeto puder ser executado localmente seguindo a documentacao.
+- O banco de dados estiver documentado com scripts e dados simulados.
+- As limitacoes academicas e eticas do MVP estiverem registradas.
+- O Canvas e o roteiro de apresentacao estiverem preparados.
+- O teste geral de demonstracao for executado.
+- O build do frontend executar com sucesso.
+
+### Documentacao Tecnica
+
+A documentacao detalhada da Sprint 7 esta em:
+
+```text
+docs/sprint-07/fechamento-apresentacao.md
+docs/sprint-07/instalacao-execucao.md
+docs/sprint-07/banco-dados.md
+docs/sprint-07/limitacoes-mvp.md
+docs/sprint-07/canvas.md
+docs/sprint-07/roteiro-apresentacao.md
+docs/sprint-07/checklist-demonstracao.md
+```
 
 ## 10. Status Atual
 
-Em 01/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3 e a Sprint 4 antecipada concluidas.
+Em 15/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3, a Sprint 4, a Sprint 5 e a Sprint 6 concluidas, e a Sprint 7 iniciada para fechamento e apresentacao.
 
 Ja foram concluidos:
 
@@ -404,9 +443,25 @@ Ja foram concluidos:
 - Sugestao da viatura disponivel mais proxima.
 - Integracao da sugestao de viatura no mapa.
 - Validacao manual do fluxo completo da Sprint 4.
+- Criacao do microservico FastAPI em `ai-service`.
+- Endpoint `POST /predict-priority`.
+- Modelo inicial baseado em regras para sugestao de prioridade.
+- Modelo simples com Scikit-learn.
+- Integracao Laravel com FastAPI.
+- Registro de predicoes em `ai_predictions`.
+- Atualizacao de `occurrences.ai_priority`.
+- Dashboard com graficos operacionais.
+- Endpoint `GET /api/alerts`.
+- Regras iniciais de geracao de alertas.
+- Painel de alertas no frontend.
+- Visualizacao de areas de risco no mapa.
+- Validacao funcional completa da Sprint 6.
 
 Proximas tarefas:
 
-1. Commitar e enviar as alteracoes finais da Sprint 4 para o repositorio remoto.
-2. Revisar o escopo da Sprint 5 antes de iniciar o microservico de IA.
-3. Iniciar a Sprint 5 com a configuracao do projeto Python em `ai-service`.
+1. Finalizar README principal com instrucoes completas de uso.
+2. Criar documentacao final de instalacao e execucao.
+3. Criar documentacao final do banco de dados.
+4. Documentar limitacoes do MVP e cuidados eticos.
+5. Preparar Canvas e roteiro de apresentacao.
+6. Executar teste geral de demonstracao.
