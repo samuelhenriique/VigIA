@@ -1,1 +1,1 @@
-import api from '../api/client'
+export { default } from '../src/api/client'

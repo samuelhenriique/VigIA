@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
+import { Circle, CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet'
 import api from '../api/client'
 
 const mapCenter = [-27.59487, -48.54822]
@@ -51,6 +51,37 @@ function vehicleColor(status) {
   return colors[status] ?? '#334155'
 }
 
+function riskColor(level) {
+  const colors = {
+    1: '#16a34a',
+    2: '#84cc16',
+    3: '#ca8a04',
+    4: '#ea580c',
+    5: '#dc2626',
+  }
+
+  return colors[Number(level)] ?? '#64748b'
+}
+
+function riskRadius(level) {
+  const radiusByLevel = {
+    1: 900,
+    2: 1200,
+    3: 1500,
+    4: 1900,
+    5: 2300,
+  }
+
+  return radiusByLevel[Number(level)] ?? 1000
+}
+
+function hasRegionCenter(region) {
+  return (
+    Number.isFinite(Number(region.center_latitude)) &&
+    Number.isFinite(Number(region.center_longitude))
+  )
+}
+
 export default function Mapa() {
   const [occurrences, setOccurrences] = useState([])
   const [vehicles, setVehicles] = useState([])
@@ -68,6 +99,7 @@ export default function Mapa() {
     occurrenceTypeId: '',
     regionId: '',
     vehicleStatus: '',
+    showRiskAreas: true,
   })
 
   useEffect(() => {
@@ -132,11 +164,11 @@ export default function Mapa() {
   }, [vehicles, filters])
 
   function handleFilterChange(event) {
-    const { name, value } = event.target
+    const { name, value, type, checked } = event.target
 
     setFilters((currentFilters) => ({
       ...currentFilters,
-      [name]: value,
+      [name]: type === 'checkbox' ? checked : value,
     }))
   }
 
@@ -147,6 +179,7 @@ export default function Mapa() {
       occurrenceTypeId: '',
       regionId: '',
       vehicleStatus: '',
+      showRiskAreas: true,
     })
   }
 
@@ -208,7 +241,7 @@ export default function Mapa() {
         </div>
       </div>
 
-      <section className="mt-6 grid gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-3 lg:grid-cols-6">
+      <section className="mt-6 grid gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-3 lg:grid-cols-7">
         <label className="text-sm">
           <span className="mb-1 block font-medium text-slate-700">
             Status ocorrencia
@@ -309,6 +342,20 @@ export default function Mapa() {
           </select>
         </label>
 
+        <label className="flex items-end gap-2 text-sm">
+          <input
+            type="checkbox"
+            name="showRiskAreas"
+            checked={filters.showRiskAreas}
+            onChange={handleFilterChange}
+            className="mb-2 h-4 w-4 rounded border-slate-300"
+          />
+
+          <span className="pb-1 font-medium text-slate-700">
+            Areas de risco
+          </span>
+        </label>
+
         <div className="flex items-end">
           <button
             type="button"
@@ -331,6 +378,30 @@ export default function Mapa() {
             attribution='&copy; OpenStreetMap contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+
+          {filters.showRiskAreas && regions.filter(hasRegionCenter).map((region) => (
+            <Circle
+              key={`risk-region-${region.id}`}
+              center={[Number(region.center_latitude), Number(region.center_longitude)]}
+              radius={riskRadius(region.risk_level)}
+              pathOptions={{
+                color: riskColor(region.risk_level),
+                fillColor: riskColor(region.risk_level),
+                fillOpacity: 0.16,
+                weight: 2,
+              }}
+            >
+              <Popup>
+                <div className="space-y-1 text-sm">
+                  <p className="font-semibold text-slate-900">
+                    {region.name}
+                  </p>
+                  <p>Nivel de risco: {region.risk_level}</p>
+                  <p>{region.city} - {region.state}</p>
+                </div>
+              </Popup>
+            </Circle>
+          ))}
 
           {filteredOccurrences.filter(hasCoordinates).map((occurrence) => (
             <CircleMarker
@@ -454,6 +525,9 @@ export default function Mapa() {
         </span>
         <span className="rounded-full bg-blue-100 px-3 py-1 text-blue-800">
           Azul: viatura em atendimento
+        </span>
+        <span className="rounded-full bg-red-100 px-3 py-1 text-red-800">
+          Areas coloridas: risco por regiao
         </span>
       </div>
     </div>

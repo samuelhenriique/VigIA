@@ -29,6 +29,20 @@ Este diretorio organiza a documentacao do projeto por sprint.
 
 - [Microservico FastAPI e modulo inicial de IA](sprint-05/microservico-ia.md)
 
+## Sprint 06 - Alertas, Graficos e Validacao
+
+- [Alertas, graficos e validacao funcional](sprint-06/alertas-graficos-validacao.md)
+
+## Sprint 07 - Fechamento e Apresentacao
+
+- [Fechamento e apresentacao](sprint-07/fechamento-apresentacao.md)
+- [Instalacao e execucao local](sprint-07/instalacao-execucao.md)
+- [Banco de dados](sprint-07/banco-dados.md)
+- [Limitacoes do MVP](sprint-07/limitacoes-mvp.md)
+- [Canvas do projeto](sprint-07/canvas.md)
+- [Roteiro de apresentacao](sprint-07/roteiro-apresentacao.md)
+- [Checklist de demonstracao](sprint-07/checklist-demonstracao.md)
+
 ## Observacao
 
 O acompanhamento geral das sprints permanece em [sprints.md](sprints.md).

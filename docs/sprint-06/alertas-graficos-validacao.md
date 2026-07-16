@@ -88,11 +88,11 @@ O Laravel continua sendo a API principal. O FastAPI segue responsavel apenas pel
 | S6-05 | Criar listagem ou painel de alertas no frontend. | Concluido |
 | S6-06 | Criar endpoint `GET /api/alerts`. | Concluido |
 | S6-07 | Criar regra de alertas para ocorrencias semelhantes. | Concluido |
-| S6-08 | Criar regra de alerta para ocorrencias criticas sem despacho. | Pendente |
-| S6-09 | Criar visualizacao de areas de risco no mapa. | Pendente |
-| S6-10 | Validar fluxo completo do MVP. | Pendente |
-| S6-11 | Corrigir erros encontrados na validacao. | Pendente |
-| S6-12 | Atualizar documentacao final da Sprint 6. | Pendente |
+| S6-08 | Criar regra de alerta para ocorrencias criticas sem despacho. | Concluido |
+| S6-09 | Criar visualizacao de areas de risco no mapa. | Concluido |
+| S6-10 | Validar fluxo completo do MVP. | Concluido |
+| S6-11 | Corrigir erros encontrados na validacao. | Concluido |
+| S6-12 | Atualizar documentacao final da Sprint 6. | Concluido |
 
 ## 7. Indicadores do Dashboard
 
@@ -441,3 +441,41 @@ A Sprint 06 sera considerada concluida quando:
 8. Executar validacao funcional completa.
 9. Corrigir erros encontrados.
 10. Atualizar este documento com o que foi entregue.
+
+## 21. Validacao Final da Sprint 06
+
+A validacao funcional da Sprint 06 foi executada com sucesso.
+
+Foram validados:
+
+- Login com usuario administrador.
+- Carregamento do dashboard.
+- Graficos operacionais com dados da API.
+- Listagem de ocorrencias.
+- Listagem de viaturas.
+- Mapa operacional.
+- Areas de risco no mapa.
+- Sugestao de viatura.
+- Listagem de alertas.
+- Geracao de alertas por regras.
+- Microservico de IA.
+- Build do frontend.
+
+Resultados principais:
+
+- `GET /api/dashboard/summary` retornou dados corretamente.
+- `GET /api/occurrences` retornou 10 ocorrencias.
+- `GET /api/vehicles` retornou 6 viaturas.
+- `GET /api/regions` retornou 8 regioes.
+- `GET /api/alerts` retornou 3 alertas.
+- `POST /api/alerts/generate` executou sem erro.
+- A sugestao de viatura retornou uma viatura disponivel.
+- O FastAPI respondeu em `/docs`.
+- O endpoint de predicao retornou prioridade valida.
+- O build do frontend executou com sucesso.
+
+Nao foram encontrados erros bloqueantes na validacao final.
+
+Observacao:
+
+O Vite exibiu aviso de bundle acima de 500 kB, mas o build foi concluido com sucesso. Esse aviso nao bloqueia a entrega do MVP academico.

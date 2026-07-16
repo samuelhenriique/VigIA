@@ -54,6 +54,16 @@ VigIA/
       mapa-geolocalizacao.md
     sprint-05/
       microservico-ia.md
+    sprint-06/
+      alertas-graficos-validacao.md
+    sprint-07/
+      fechamento-apresentacao.md
+      instalacao-execucao.md
+      banco-dados.md
+      limitacoes-mvp.md
+      canvas.md
+      roteiro-apresentacao.md
+      checklist-demonstracao.md
   frontend/
   README.md
 ```
@@ -70,6 +80,14 @@ VigIA/
 - [Sprint 3 - Frontend React](docs/sprint-03/frontend-react.md)
 - [Sprint 4 - Mapa e geolocalizacao](docs/sprint-04/mapa-geolocalizacao.md)
 - [Sprint 5 - Microservico de IA](docs/sprint-05/microservico-ia.md)
+- [Sprint 6 - Alertas, graficos e validacao](docs/sprint-06/alertas-graficos-validacao.md)
+- [Sprint 7 - Fechamento e apresentacao](docs/sprint-07/fechamento-apresentacao.md)
+- [Sprint 7 - Instalacao e execucao](docs/sprint-07/instalacao-execucao.md)
+- [Sprint 7 - Banco de dados](docs/sprint-07/banco-dados.md)
+- [Sprint 7 - Limitacoes do MVP](docs/sprint-07/limitacoes-mvp.md)
+- [Sprint 7 - Canvas do projeto](docs/sprint-07/canvas.md)
+- [Sprint 7 - Roteiro de apresentacao](docs/sprint-07/roteiro-apresentacao.md)
+- [Sprint 7 - Checklist de demonstracao](docs/sprint-07/checklist-demonstracao.md)
 
 ## Banco de Dados
 
@@ -155,6 +173,11 @@ DELETE /api/vehicles/{id}
 GET /api/regions
 GET /api/occurrence-types
 GET /api/dashboard/summary
+GET /api/vehicles/available
+GET /api/occurrences/{id}/suggest-vehicle
+POST /api/occurrences/{id}/predict-priority
+GET /api/alerts
+POST /api/alerts/generate
 ```
 
 As rotas principais exigem token Bearer retornado pelo login. Mais detalhes estao em:
@@ -168,8 +191,8 @@ docs/sprint-02/api.md
 Sprint atual:
 
 ```text
-Sprint 2 - Backend Laravel
-Status: Concluida
+Sprint 7 - Fechamento e Apresentacao
+Status: Em andamento
 ```
 
 Ja concluido:
@@ -191,12 +214,33 @@ Ja concluido:
 - Endpoints de regioes e tipos de ocorrencia.
 - Endpoint de dashboard operacional.
 - Documentacao da API da Sprint 2.
+- Frontend React com Vite.
+- TailwindCSS, React Router, Axios e Lucide React.
+- Tela de login integrada ao Laravel Sanctum.
+- Rotas protegidas no frontend.
+- Dashboard integrado com a API.
+- Listagem de ocorrencias integrada com a API.
+- Listagem de viaturas integrada com a API.
+- Mapa operacional com Leaflet e React Leaflet.
+- Filtros de ocorrencias e viaturas no mapa.
+- Sugestao de viatura disponivel mais proxima.
+- Microservico FastAPI para sugestao de prioridade.
+- Modelo inicial de IA baseado em regras e modelo simples com Scikit-learn.
+- Integracao Laravel com o microservico de IA.
+- Registro de predicoes em `ai_predictions`.
+- Graficos operacionais com Chart.js.
+- Painel e regras de alertas operacionais.
+- Areas de risco no mapa.
+- Validacao funcional da Sprint 6.
 
 Proximas etapas:
 
-- Criar colecao Postman ou Insomnia para testes manuais.
-- Iniciar Sprint 3 com React.
-- Criar tela de login e integrar frontend com API Laravel.
+- Revisar requisitos entregues.
+- Atualizar documentacao final de instalacao, execucao e banco de dados.
+- Documentar limitacoes do MVP.
+- Preparar Canvas do projeto.
+- Preparar roteiro de apresentacao academica.
+- Executar teste geral de demonstracao.
 
 ## Observacoes Academicas
 
