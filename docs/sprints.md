@@ -413,7 +413,7 @@ Esta sprint deve transformar o uso do sistema em um fluxo mais completo: registr
 
 | Codigo | Tarefa | Status |
 |---|---|---|
-| S8-01 | Criar testes de API para autenticacao e rotas protegidas. | Pendente |
+| S8-01 | Criar testes de API para autenticacao e rotas protegidas. | Concluido |
 | S8-02 | Criar testes de API para dashboard, ocorrencias, viaturas e alertas. | Pendente |
 | S8-03 | Criar testes do `ai-service` para prioridades baixa, media, alta e critica. | Pendente |
 | S8-04 | Criar tela de detalhe da ocorrencia. | Pendente |
