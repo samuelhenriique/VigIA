@@ -53,20 +53,20 @@ Nao faz parte desta sprint:
 
 ## 5. Tarefas da Sprint
 
-| Codigo | Tarefa | Status inicial |
+| Codigo | Tarefa | Status |
 |---|---|---|
-| S7-01 | Revisar requisitos entregues no MVP. | Pendente |
-| S7-02 | Atualizar `README.md` principal com status final do projeto. | Pendente |
-| S7-03 | Documentar instalacao e execucao local do backend, frontend e IA. | Pendente |
-| S7-04 | Documentar banco de dados, scripts e dados simulados. | Pendente |
-| S7-05 | Documentar limitacoes do MVP e cuidados eticos. | Pendente |
-| S7-06 | Criar checklist de teste geral de demonstracao. | Pendente |
-| S7-07 | Preparar Canvas do projeto. | Pendente |
-| S7-08 | Preparar roteiro de apresentacao academica. | Pendente |
-| S7-09 | Executar teste geral do fluxo demonstravel. | Pendente |
-| S7-10 | Corrigir problemas encontrados na revisao final. | Pendente |
-| S7-11 | Revisar links e consistencia da documentacao. | Pendente |
-| S7-12 | Consolidar entrega final da Sprint 7. | Pendente |
+| S7-01 | Revisar requisitos entregues no MVP. | Concluido |
+| S7-02 | Atualizar `README.md` principal com status final do projeto. | Concluido |
+| S7-03 | Documentar instalacao e execucao local do backend, frontend e IA. | Concluido |
+| S7-04 | Documentar banco de dados, scripts e dados simulados. | Concluido |
+| S7-05 | Documentar limitacoes do MVP e cuidados eticos. | Concluido |
+| S7-06 | Criar checklist de teste geral de demonstracao. | Concluido |
+| S7-07 | Preparar Canvas do projeto. | Concluido |
+| S7-08 | Preparar roteiro de apresentacao academica. | Concluido |
+| S7-09 | Executar teste geral do fluxo demonstravel. | Concluido |
+| S7-10 | Corrigir problemas encontrados na revisao final. | Concluido |
+| S7-11 | Revisar links e consistencia da documentacao. | Concluido |
+| S7-12 | Consolidar entrega final da Sprint 7. | Concluido |
 
 ## 6. Documentacao Final Prevista
 
@@ -148,17 +148,17 @@ FastAPI docs: http://127.0.0.1:8001/docs
 
 | Item | Resultado esperado | Status |
 |---|---|---|
-| Login | Usuario administrador autentica com sucesso. | Pendente |
-| Dashboard | Cards e graficos carregam dados da API. | Pendente |
-| Ocorrencias | Listagem exibe dados simulados. | Pendente |
-| IA | Sugestao de prioridade retorna valor valido. | Pendente |
-| Viaturas | Listagem exibe viaturas simuladas. | Pendente |
-| Mapa | Ocorrencias e viaturas aparecem no mapa. | Pendente |
-| Sugestao de viatura | Sistema indica viatura disponivel mais proxima. | Pendente |
-| Areas de risco | Camada de risco aparece no mapa. | Pendente |
-| Alertas | Alertas operacionais aparecem na interface. | Pendente |
-| Build frontend | `npm run build` conclui com sucesso. | Pendente |
-| Documentacao | Links principais funcionam. | Pendente |
+| Login | Usuario administrador autentica com sucesso. | Concluido |
+| Dashboard | Cards e graficos carregam dados da API. | Concluido |
+| Ocorrencias | Listagem exibe dados simulados. | Concluido |
+| IA | Sugestao de prioridade retorna valor valido. | Concluido |
+| Viaturas | Listagem exibe viaturas simuladas. | Concluido |
+| Mapa | Ocorrencias e viaturas aparecem no mapa. | Concluido |
+| Sugestao de viatura | Sistema indica viatura disponivel mais proxima. | Concluido |
+| Areas de risco | Camada de risco aparece no mapa. | Concluido |
+| Alertas | Alertas operacionais aparecem na interface. | Concluido |
+| Build frontend | `npm run build` conclui com sucesso. | Concluido |
+| Documentacao | Links principais funcionam. | Concluido |
 
 ## 10. Criterios de Aceite
 
@@ -185,13 +185,51 @@ A Sprint 07 sera considerada concluida quando:
 | IA parecer decisao automatica real | Reforcar que e apoio academico com supervisao humana. |
 | Dados simulados serem confundidos com dados reais | Documentar explicitamente que todos os dados sao ficticios. |
 
-## 12. Proximos Passos
+## 12. Validacao Final da Sprint 07
 
-1. Criar documentacao de instalacao e execucao.
-2. Criar documentacao final do banco de dados.
-3. Criar documento de limitacoes do MVP.
-4. Criar Canvas do projeto.
-5. Criar roteiro de apresentacao.
-6. Criar checklist detalhado de demonstracao.
-7. Executar validacao final do sistema.
-8. Atualizar status das tarefas da Sprint 7.
+A validacao final da Sprint 07 foi executada com sucesso em ambiente local.
+
+Foram validados:
+
+- Login com usuario administrador.
+- Rotas protegidas por token.
+- Dashboard com cards e graficos.
+- Listagem de ocorrencias.
+- Listagem de viaturas.
+- Mapa operacional com Leaflet.
+- Marcadores de ocorrencias e viaturas.
+- Filtros do mapa.
+- Camada de areas de risco.
+- Sugestao de viatura.
+- Microservico FastAPI.
+- Sugestao de prioridade por IA.
+- Painel de alertas.
+- Filtros de alertas.
+- Logout.
+- Build do frontend.
+- Lint do frontend.
+- Testes automatizados do Laravel.
+- Sintaxe do microservico Python.
+
+Resultados principais:
+
+- `php artisan test` executou com sucesso.
+- `npm run lint` executou com sucesso.
+- `npm run build` executou com sucesso.
+- `python -m compileall app` executou com sucesso.
+- `GET /api/dashboard/summary` retornou os dados operacionais.
+- `GET /api/occurrences` retornou 10 ocorrencias simuladas.
+- `GET /api/vehicles` retornou 6 viaturas simuladas.
+- `GET /api/alerts` retornou 3 alertas simulados.
+- `POST /predict-priority` retornou prioridade valida.
+- A validacao visual no navegador nao registrou erros ou warnings no console.
+
+Observacao:
+
+O build do Vite exibiu aviso de bundle acima de 500 kB, mas foi concluido com sucesso. Esse aviso nao bloqueia a entrega do MVP academico.
+
+## 13. Status Final
+
+A Sprint 07 esta concluida.
+
+Com a conclusao desta sprint, o MVP VigIA esta preparado para apresentacao academica, com documentacao final, checklist de demonstracao, Canvas, roteiro de apresentacao e validacao funcional registrada.

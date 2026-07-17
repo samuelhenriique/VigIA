@@ -349,14 +349,14 @@ Preparar o projeto para entrega final, com testes, documentacao, Canvas e aprese
 
 | Codigo | Tarefa | Status |
 |---|---|---|
-| S7-01 | Revisar requisitos entregues no MVP. | Pendente |
-| S7-02 | Atualizar README final. | Em andamento |
-| S7-03 | Documentar instalacao e execucao do projeto. | Em andamento |
-| S7-04 | Documentar banco de dados. | Em andamento |
-| S7-05 | Documentar limitacoes do MVP. | Em andamento |
-| S7-06 | Preparar Canvas do projeto. | Em andamento |
-| S7-07 | Preparar apresentacao. | Em andamento |
-| S7-08 | Realizar teste geral de demonstracao. | Pendente |
+| S7-01 | Revisar requisitos entregues no MVP. | Concluido |
+| S7-02 | Atualizar README final. | Concluido |
+| S7-03 | Documentar instalacao e execucao do projeto. | Concluido |
+| S7-04 | Documentar banco de dados. | Concluido |
+| S7-05 | Documentar limitacoes do MVP. | Concluido |
+| S7-06 | Preparar Canvas do projeto. | Concluido |
+| S7-07 | Preparar apresentacao. | Concluido |
+| S7-08 | Realizar teste geral de demonstracao. | Concluido |
 
 ### Entregaveis Esperados
 
@@ -397,7 +397,7 @@ docs/sprint-07/checklist-demonstracao.md
 
 ## 10. Status Atual
 
-Em 15/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3, a Sprint 4, a Sprint 5 e a Sprint 6 concluidas, e a Sprint 7 iniciada para fechamento e apresentacao.
+Em 17/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3, a Sprint 4, a Sprint 5, a Sprint 6 e a Sprint 7 concluidas.
 
 Ja foram concluidos:
 
@@ -456,12 +456,16 @@ Ja foram concluidos:
 - Painel de alertas no frontend.
 - Visualizacao de areas de risco no mapa.
 - Validacao funcional completa da Sprint 6.
+- Revisao dos requisitos entregues no MVP.
+- Atualizacao do README final.
+- Documentacao final de instalacao e execucao.
+- Documentacao final do banco de dados.
+- Documentacao das limitacoes do MVP e cuidados eticos.
+- Canvas do projeto.
+- Roteiro de apresentacao academica.
+- Checklist de demonstracao.
+- Validacao funcional e visual completa da Sprint 7.
 
-Proximas tarefas:
+Status final:
 
-1. Finalizar README principal com instrucoes completas de uso.
-2. Criar documentacao final de instalacao e execucao.
-3. Criar documentacao final do banco de dados.
-4. Documentar limitacoes do MVP e cuidados eticos.
-5. Preparar Canvas e roteiro de apresentacao.
-6. Executar teste geral de demonstracao.
+O MVP VigIA esta preparado para apresentacao academica, com backend, frontend, banco de dados, mapa, modulo de IA, alertas, graficos, documentacao final, Canvas, roteiro de apresentacao e checklist de demonstracao validados.
