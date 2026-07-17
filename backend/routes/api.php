@@ -10,7 +10,6 @@ use App\Http\Controllers\Api\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
-Route::post('alerts/generate', [AlertController::class, 'generate']);
 
 Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('me', [AuthController::class, 'me']);

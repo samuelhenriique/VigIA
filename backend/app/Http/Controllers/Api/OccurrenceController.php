@@ -161,9 +161,17 @@ class OccurrenceController extends Controller
 
     private function updateGeom(Occurrence $occurrence): void
     {
+        if (DB::connection()->getDriverName() !== 'pgsql') {
+            return;
+        }
+
         DB::statement(
             'UPDATE occurrences SET geom = ST_SetSRID(ST_MakePoint(?, ?), 4326)::geography WHERE id = ?',
-            [(float) $occurrence->longitude, (float) $occurrence->latitude, $occurrence->id]
+            [
+                (float) $occurrence->longitude,
+                (float) $occurrence->latitude,
+                $occurrence->id,
+            ]
         );
     }
 
