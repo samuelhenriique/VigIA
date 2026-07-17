@@ -106,9 +106,17 @@ class VehicleController extends Controller
 
     private function updateGeom(Vehicle $vehicle): void
     {
+        if (DB::connection()->getDriverName() !== 'pgsql') {
+            return;
+        }
+
         DB::statement(
             'UPDATE vehicles SET geom = ST_SetSRID(ST_MakePoint(?, ?), 4326)::geography WHERE id = ?',
-            [(float) $vehicle->longitude, (float) $vehicle->latitude, $vehicle->id]
+            [
+                (float) $vehicle->longitude,
+                (float) $vehicle->latitude,
+                $vehicle->id,
+            ]
         );
     }
 }
