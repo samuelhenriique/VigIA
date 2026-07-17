@@ -15,6 +15,8 @@ O desenvolvimento do projeto VigIA sera organizado em sprints de duas semanas, i
 | Sprint 5 | 18/08/2026 a 31/08/2026 | Microservico FastAPI e modulo inicial de IA. |
 | Sprint 6 | 01/09/2026 a 14/09/2026 | Predicao de areas de risco, alertas, graficos e validacao funcional. |
 | Sprint 7 | 15/09/2026 a 28/09/2026 | Testes finais, ajustes, documentacao, Canvas e apresentacao. |
+| Sprint 8 | 29/09/2026 a 12/10/2026 | Refinamento do fluxo operacional, CRUD frontend, despacho e testes. |
+| Sprint 9 | 13/10/2026 a 26/10/2026 | Funcionalidades avancadas, relatorios, melhorias de mapa, IA e apresentacao final. |
 
 ## 3. Sprint 1 - Estrutura, Requisitos e Banco
 
@@ -395,9 +397,159 @@ docs/sprint-07/roteiro-apresentacao.md
 docs/sprint-07/checklist-demonstracao.md
 ```
 
-## 10. Status Atual
+## 10. Sprint 8 - Refinamento e Qualidade
 
-Em 17/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3, a Sprint 4, a Sprint 5, a Sprint 6 e a Sprint 7 concluidas.
+### Periodo
+
+29/09/2026 a 12/10/2026
+
+### Objetivo
+
+Evoluir o MVP com foco em qualidade, fluxo operacional completo e usabilidade, sem comprometer a estabilidade ja validada na Sprint 7.
+
+Esta sprint deve transformar o uso do sistema em um fluxo mais completo: registrar ocorrencia, consultar detalhes, sugerir prioridade, sugerir viatura, confirmar despacho e refletir o atendimento nas telas principais.
+
+### Tarefas Previstas
+
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S8-01 | Criar testes de API para autenticacao e rotas protegidas. | Pendente |
+| S8-02 | Criar testes de API para dashboard, ocorrencias, viaturas e alertas. | Pendente |
+| S8-03 | Criar testes do `ai-service` para prioridades baixa, media, alta e critica. | Pendente |
+| S8-04 | Criar tela de detalhe da ocorrencia. | Pendente |
+| S8-05 | Exibir dados completos da ocorrencia, tipo, regiao, prioridade e status. | Pendente |
+| S8-06 | Exibir historico de predicoes da IA relacionadas a ocorrencia. | Pendente |
+| S8-07 | Exibir alertas relacionados a ocorrencia. | Pendente |
+| S8-08 | Criar formulario frontend para cadastro de ocorrencias. | Pendente |
+| S8-09 | Criar formulario frontend para edicao de ocorrencias. | Pendente |
+| S8-10 | Criar formulario frontend para cadastro e edicao de viaturas. | Pendente |
+| S8-11 | Criar fluxo para confirmar despacho de viatura sugerida. | Pendente |
+| S8-12 | Criar endpoint ou acao para registrar despacho em `dispatches`. | Pendente |
+| S8-13 | Atualizar status da ocorrencia e da viatura apos despacho confirmado. | Pendente |
+| S8-14 | Refletir despacho confirmado no dashboard, listagens e mapa. | Pendente |
+| S8-15 | Adicionar mensagens de sucesso, erro e carregamento nas acoes principais. | Pendente |
+| S8-16 | Executar validacao funcional da Sprint 8. | Pendente |
+
+### Entregaveis Esperados
+
+- Testes automatizados mais completos no backend.
+- Testes do microservico de IA.
+- Tela de detalhe da ocorrencia.
+- CRUD frontend de ocorrencias.
+- CRUD frontend de viaturas.
+- Fluxo de confirmacao de despacho.
+- Atualizacao visual do atendimento no mapa e dashboard.
+- Melhorias de feedback para o usuario.
+
+### Criterios de Aceite
+
+A Sprint 8 sera considerada concluida quando:
+
+- O login tiver teste automatizado.
+- As rotas protegidas retornarem `401` sem token em teste automatizado.
+- Dashboard, ocorrencias, viaturas e alertas tiverem testes de API.
+- O `ai-service` tiver testes cobrindo prioridades baixa, media, alta e critica.
+- A tela de detalhe de ocorrencia estiver acessivel pelo frontend.
+- O usuario conseguir cadastrar e editar ocorrencias pelo frontend.
+- O usuario conseguir cadastrar e editar viaturas pelo frontend.
+- O usuario conseguir confirmar o despacho de uma viatura sugerida.
+- O despacho confirmado criar registro em `dispatches`.
+- O status da ocorrencia e da viatura for atualizado apos despacho.
+- Dashboard, listagens e mapa refletirem o despacho.
+- O build do frontend executar com sucesso.
+- A validacao funcional da sprint estiver documentada.
+
+### Riscos e Decisoes
+
+| Risco | Decisao |
+|---|---|
+| Quebrar o MVP ja validado | Manter mudancas pequenas e validar cada fluxo. |
+| CRUD aumentar complexidade visual | Reutilizar padroes simples de formulario e tabela. |
+| Confirmacao de despacho virar automacao real | Documentar que a acao simula decisao humana do operador. |
+| Testes exigirem muitos dados | Usar dados simulados controlados e factories quando possivel. |
+
+## 11. Sprint 9 - Funcionalidades Avancadas e Apresentacao Final
+
+### Periodo
+
+13/10/2026 a 26/10/2026
+
+### Objetivo
+
+Adicionar melhorias avancadas e preparar a entrega final com maior maturidade tecnica, visual e academica.
+
+Esta sprint deve priorizar funcionalidades que enriquecem a demonstracao sem alterar a proposta central do MVP: relatorios, mapa mais informativo, alertas com ciclo de vida, melhorias de IA, acabamento visual e apresentacao final.
+
+### Tarefas Previstas
+
+| Codigo | Tarefa | Status |
+|---|---|---|
+| S9-01 | Criar filtros avancados para relatorio de ocorrencias por periodo. | Pendente |
+| S9-02 | Criar relatorio de ocorrencias por regiao, tipo e prioridade. | Pendente |
+| S9-03 | Criar exportacao CSV dos relatorios principais. | Pendente |
+| S9-04 | Criar pagina de analise de risco por regiao. | Pendente |
+| S9-05 | Criar ranking de regioes por risco e ocorrencias recentes. | Pendente |
+| S9-06 | Melhorar sidebar ou painel de ocorrencia selecionada no mapa. | Pendente |
+| S9-07 | Adicionar botoes para centralizar mapa em ocorrencia ou viatura. | Pendente |
+| S9-08 | Adicionar alternancia de camadas no mapa: ocorrencias, viaturas e risco. | Pendente |
+| S9-09 | Exibir linha entre ocorrencia e viatura sugerida ou despachada. | Pendente |
+| S9-10 | Permitir marcar alertas como visualizado ou resolvido. | Pendente |
+| S9-11 | Exibir historico e status dos alertas por ocorrencia. | Pendente |
+| S9-12 | Melhorar regra de IA para tratar negacoes simples. | Pendente |
+| S9-13 | Criar endpoint `/model-info` no `ai-service`. | Pendente |
+| S9-14 | Exibir explicacao da IA de forma mais clara no frontend. | Pendente |
+| S9-15 | Reduzir aviso de bundle do Vite com code splitting quando viavel. | Pendente |
+| S9-16 | Melhorar responsividade das principais telas. | Pendente |
+| S9-17 | Criar colecao Postman ou Insomnia para demonstracao da API. | Pendente |
+| S9-18 | Preparar slides finais da apresentacao academica. | Pendente |
+| S9-19 | Criar roteiro final de demonstracao cronometrado. | Pendente |
+| S9-20 | Executar ensaio final da apresentacao. | Pendente |
+
+### Entregaveis Esperados
+
+- Relatorios operacionais.
+- Exportacao CSV.
+- Pagina de analise de risco.
+- Mapa com mais controles e melhor visualizacao operacional.
+- Alertas com ciclo de vida.
+- IA com melhor tratamento de contexto simples.
+- Endpoint de informacao do modelo.
+- Melhor responsividade e acabamento visual.
+- Colecao de API para testes manuais.
+- Slides e roteiro final de apresentacao.
+
+### Criterios de Aceite
+
+A Sprint 9 sera considerada concluida quando:
+
+- O sistema gerar relatorios por periodo, regiao, tipo e prioridade.
+- O usuario conseguir exportar relatorios em CSV.
+- A pagina de analise de risco exibir regioes e indicadores simulados.
+- O mapa permitir alternar camadas de ocorrencias, viaturas e risco.
+- A ocorrencia selecionada no mapa tiver painel informativo.
+- A sugestao ou despacho de viatura puder ser visualizada no mapa.
+- Alertas puderem ser marcados como visualizados ou resolvidos.
+- O `ai-service` tratar negacoes simples em cenarios documentados.
+- O endpoint `/model-info` retornar nome, versao e tipo do modelo.
+- O frontend exibir explicacoes da IA com clareza.
+- As principais telas estiverem responsivas.
+- A colecao de API estiver pronta para demonstracao.
+- Os slides finais estiverem preparados.
+- O ensaio final da apresentacao for executado.
+
+### Riscos e Decisoes
+
+| Risco | Decisao |
+|---|---|
+| Funcionalidades avancadas atrasarem a entrega | Priorizar relatorios, mapa e alertas antes de melhorias esteticas. |
+| Relatorios parecerem dados reais | Reforcar que todos os dados sao simulados. |
+| IA parecer conclusiva demais | Exibir explicacao, limitacoes e supervisao humana. |
+| Exportacao aumentar escopo | Comecar por CSV simples antes de PDF. |
+| Apresentacao ficar longa | Criar roteiro cronometrado e ensaiar o fluxo principal. |
+
+## 12. Status Atual
+
+Em 17/07/2026, o projeto esta com a Sprint 1, a Sprint 2, a Sprint 3, a Sprint 4, a Sprint 5, a Sprint 6 e a Sprint 7 concluidas. As Sprints 8 e 9 foram planejadas como fase de evolucao pos-MVP ate a entrega final.
 
 Ja foram concluidos:
 
@@ -469,3 +621,11 @@ Ja foram concluidos:
 Status final:
 
 O MVP VigIA esta preparado para apresentacao academica, com backend, frontend, banco de dados, mapa, modulo de IA, alertas, graficos, documentacao final, Canvas, roteiro de apresentacao e checklist de demonstracao validados.
+
+Proximas tarefas:
+
+1. Iniciar a Sprint 8 com testes automatizados de API.
+2. Criar a tela de detalhe da ocorrencia.
+3. Implementar CRUD frontend de ocorrencias e viaturas.
+4. Implementar fluxo de confirmacao de despacho.
+5. Validar que dashboard, listagens e mapa refletem o despacho confirmado.
