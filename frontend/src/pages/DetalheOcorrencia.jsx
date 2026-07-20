@@ -24,6 +24,23 @@ function statusClasses(status) {
   )
 }
 
+function formatDateTime(value) {
+  if (!value) {
+    return 'Nao informada'
+  }
+
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return value
+  }
+
+  return new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(date)
+}
+
 export default function DetalheOcorrencia() {
   const { id } = useParams()
 
@@ -150,25 +167,120 @@ export default function DetalheOcorrencia() {
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="text-sm font-medium text-slate-500">
-            Status atual
-          </p>
+      <div className="mt-6">
+        <h2 className="text-lg font-semibold text-slate-900">
+          Dados operacionais
+        </h2>
 
-          <p className="mt-2 text-base font-semibold capitalize text-slate-900">
-            {formatStatus(occurrence.status)}
-          </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">Status</p>
+            <p className="mt-2 font-semibold capitalize text-slate-900">
+              {formatStatus(occurrence.status)}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Tipo da ocorrencia
+            </p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {occurrence.occurrence_type?.name ?? 'Nao informado'}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">Regiao</p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {occurrence.region?.name ?? 'Nao informada'}
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              {occurrence.region
+                ? `${occurrence.region.city}/${occurrence.region.state}`
+                : ''}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Gravidade informada
+            </p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {occurrence.informed_severity ?? 'Nao informada'}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Prioridade humana
+            </p>
+            <p className="mt-2 font-semibold capitalize text-slate-900">
+              {occurrence.human_priority ?? 'Nao definida'}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Prioridade da IA
+            </p>
+            <p className="mt-2 font-semibold capitalize text-slate-900">
+              {occurrence.ai_priority ?? 'Nao definida'}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Data da ocorrencia
+            </p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {formatDateTime(occurrence.occurred_at)}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Tempo de resposta
+            </p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {occurrence.response_time_minutes != null
+                ? `${occurrence.response_time_minutes} minutos`
+                : 'Nao informado'}
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-slate-500">
+              Responsavel pelo cadastro
+            </p>
+            <p className="mt-2 font-semibold text-slate-900">
+              {occurrence.created_by?.name ?? 'Nao informado'}
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              {occurrence.created_by?.email ?? ''}
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="text-sm font-medium text-slate-500">
-            Prioridade sugerida
-          </p>
+      <div className="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-semibold text-slate-900">
+          Localizacao
+        </h2>
 
-          <p className="mt-2 text-base font-semibold capitalize text-slate-900">
-            {occurrence.ai_priority ?? 'Nao definida'}
-          </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-sm font-medium text-slate-500">Latitude</p>
+            <p className="mt-1 text-slate-900">
+              {occurrence.latitude ?? 'Nao informada'}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-slate-500">Longitude</p>
+            <p className="mt-1 text-slate-900">
+              {occurrence.longitude ?? 'Nao informada'}
+            </p>
+          </div>
         </div>
       </div>
     </div>
