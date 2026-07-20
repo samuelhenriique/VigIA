@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../api/client'
+import { Link } from 'react-router-dom'
 
 export default function Ocorrencias() {
   const [ocorrencias, setOcorrencias] = useState([])
@@ -52,6 +53,7 @@ export default function Ocorrencias() {
               <th className="px-6 py-3 font-medium">Status</th>
               <th className="px-6 py-3 font-medium">Prioridade</th>
               <th className="px-6 py-3 font-medium">Descricao</th>
+              <th className="px-6 py-3 font-medium">Acoes</th>
             </tr>
           </thead>
 
@@ -72,6 +74,15 @@ export default function Ocorrencias() {
 
                 <td className="px-4 py-3 text-slate-700">
                   {occurrence.description}
+                </td>
+
+                <td className="px-4 py-3">
+                  <Link
+                    to={`/ocorrencias/${occurrence.id}`}
+                    className="font-medium text-blue-700 hover:text-blue-900"
+                  >
+                    Ver detalhes
+                  </Link>
                 </td>
               </tr>
             ))}
