@@ -34,7 +34,10 @@ class OccurrenceController extends Controller
 
     public function store(StoreOccurrenceRequest $request)
     {
-        $occurrence = Occurrence::create($request->validated());
+        $data = $request->validated();
+        $data['created_by'] = $request->user()->id;
+
+        $occurrence = Occurrence::create($data);
 
         $this->updateGeom($occurrence);
 
@@ -50,6 +53,14 @@ class OccurrenceController extends Controller
             'occurrenceType:id,name,default_severity',
             'region:id,name,city,state,risk_level',
             'createdBy:id,name,email',
+
+            'aiPredictions' => fn ($query) => $query
+                ->orderByDesc('created_at')
+                ->orderByDesc('id'),
+
+            'alerts' => fn ($query) => $query
+                ->orderByDesc('created_at')
+                ->orderByDesc('id'),
         ])->findOrFail($id);
 
         return response()->json($occurrence);

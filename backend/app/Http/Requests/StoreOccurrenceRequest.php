@@ -36,7 +36,6 @@ class StoreOccurrenceRequest extends FormRequest
             'longitude' => ['required', 'numeric', 'between:-180,180'],
             'occurred_at' => ['required', 'date'],
             'response_time_minutes' => ['nullable', 'integer', 'min:0'],
-            'created_by' => ['nullable', 'integer', 'exists:users,id'],
         ];
     }
 }

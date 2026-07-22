@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Api;
 
+use App\Models\AiPrediction;
+use App\Models\Alert;
 use App\Models\Occurrence;
 use App\Models\OccurrenceType;
 use App\Models\Region;
@@ -63,6 +65,36 @@ class OccurrenceTest extends TestCase
             'created_by' => $user->id,
         ]);
 
+        $olderPrediction = AiPrediction::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'model_name' => 'rules-v1',
+            'predicted_priority' => 'media',
+            'created_at' => now()->subMinute(),
+        ]);
+
+        $newerPrediction = AiPrediction::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'model_name' => 'sklearn-logistic-regression-v1',
+            'predicted_priority' => 'alta',
+            'created_at' => now(),
+        ]);
+
+        $olderAlert = Alert::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'title' => 'Alerta mais antigo',
+            'created_at' => now()->subMinute(),
+        ]);
+
+        $newerAlert = Alert::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'title' => 'Alerta mais recente',
+            'created_at' => now(),
+        ]);
+
+        Alert::factory()->create([
+            'title' => 'Alerta de outra ocorrencia',
+        ]);
+
         $this->getJson("/api/occurrences/{$occurrence->id}")
             ->assertOk()
             ->assertJsonPath('id', $occurrence->id)
@@ -71,7 +103,17 @@ class OccurrenceTest extends TestCase
                 $occurrence->occurrence_type_id
             )
             ->assertJsonPath('region.id', $occurrence->region_id)
-            ->assertJsonPath('created_by.id', $user->id);
+            ->assertJsonPath('created_by.id', $user->id)
+            ->assertJsonCount(2, 'ai_predictions')
+            ->assertJsonPath('ai_predictions.0.id', $newerPrediction->id)
+            ->assertJsonPath('ai_predictions.0.predicted_priority', 'alta')
+            ->assertJsonPath('ai_predictions.1.id', $olderPrediction->id)
+            ->assertJsonPath('ai_predictions.1.predicted_priority', 'media')
+            ->assertJsonCount(2, 'alerts')
+            ->assertJsonPath('alerts.0.id', $newerAlert->id)
+            ->assertJsonPath('alerts.0.title', 'Alerta mais recente')
+            ->assertJsonPath('alerts.1.id', $olderAlert->id)
+            ->assertJsonPath('alerts.1.title', 'Alerta mais antigo');
     }
 
     public function test_occurrence_can_be_created(): void
@@ -92,7 +134,6 @@ class OccurrenceTest extends TestCase
             'latitude' => -23.5505200,
             'longitude' => -46.6333080,
             'occurred_at' => '2026-07-17 10:00:00',
-            'created_by' => $user->id,
         ];
 
         $this->postJson('/api/occurrences', $payload)
@@ -100,12 +141,14 @@ class OccurrenceTest extends TestCase
             ->assertJsonPath('code', 'OCO-TEST-001')
             ->assertJsonPath('status', 'aberta')
             ->assertJsonPath('occurrence_type.id', $type->id)
-            ->assertJsonPath('region.id', $region->id);
+            ->assertJsonPath('region.id', $region->id)
+            ->assertJsonPath('created_by.id', $user->id);
 
         $this->assertDatabaseHas('occurrences', [
             'code' => 'OCO-TEST-001',
             'title' => 'Ocorrencia criada no teste',
             'status' => 'aberta',
+            'created_by' => $user->id,
         ]);
     }
 

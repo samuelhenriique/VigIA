@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../api/client'
+import { Link } from 'react-router-dom'
 
 export default function Ocorrencias() {
   const [ocorrencias, setOcorrencias] = useState([])
@@ -36,13 +37,24 @@ export default function Ocorrencias() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-slate-900">
-        Ocorrencias
-      </h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">
+            Ocorrencias
+          </h1>
 
-      <p className="mt-2 text-sm text-slate-600">
-        Listagem de ocorrencias cadastradas no sistema.
-      </p>
+          <p className="mt-2 text-sm text-slate-600">
+            Listagem de ocorrencias cadastradas no sistema.
+          </p>
+        </div>
+
+        <Link
+          to="/ocorrencias/nova"
+          className="inline-flex w-fit items-center rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800"
+        >
+          Nova ocorrencia
+        </Link>
+      </div>
 
       <div className="mt-6 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
@@ -52,6 +64,7 @@ export default function Ocorrencias() {
               <th className="px-6 py-3 font-medium">Status</th>
               <th className="px-6 py-3 font-medium">Prioridade</th>
               <th className="px-6 py-3 font-medium">Descricao</th>
+              <th className="px-6 py-3 font-medium">Acoes</th>
             </tr>
           </thead>
 
@@ -72,6 +85,15 @@ export default function Ocorrencias() {
 
                 <td className="px-4 py-3 text-slate-700">
                   {occurrence.description}
+                </td>
+
+                <td className="px-4 py-3">
+                  <Link
+                    to={`/ocorrencias/${occurrence.id}`}
+                    className="font-medium text-blue-700 hover:text-blue-900"
+                  >
+                    Ver detalhes
+                  </Link>
                 </td>
               </tr>
             ))}
