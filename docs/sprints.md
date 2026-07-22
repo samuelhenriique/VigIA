@@ -420,7 +420,7 @@ Esta sprint deve transformar o uso do sistema em um fluxo mais completo: registr
 | S8-05 | Exibir dados completos da ocorrencia, tipo, regiao, prioridade e status. | Concluido |
 | S8-06 | Exibir historico de predicoes da IA relacionadas a ocorrencia. | Concluido |
 | S8-07 | Exibir alertas relacionados a ocorrencia. | Concluido |
-| S8-08 | Criar formulario frontend para cadastro de ocorrencias. | Pendente |
+| S8-08 | Criar formulario frontend para cadastro de ocorrencias. | Concluido |
 | S8-09 | Criar formulario frontend para edicao de ocorrencias. | Pendente |
 | S8-10 | Criar formulario frontend para cadastro e edicao de viaturas. | Pendente |
 | S8-11 | Criar fluxo para confirmar despacho de viatura sugerida. | Pendente |

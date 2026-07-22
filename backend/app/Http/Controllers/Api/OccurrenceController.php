@@ -34,7 +34,10 @@ class OccurrenceController extends Controller
 
     public function store(StoreOccurrenceRequest $request)
     {
-        $occurrence = Occurrence::create($request->validated());
+        $data = $request->validated();
+        $data['created_by'] = $request->user()->id;
+
+        $occurrence = Occurrence::create($data);
 
         $this->updateGeom($occurrence);
 

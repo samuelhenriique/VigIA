@@ -134,7 +134,6 @@ class OccurrenceTest extends TestCase
             'latitude' => -23.5505200,
             'longitude' => -46.6333080,
             'occurred_at' => '2026-07-17 10:00:00',
-            'created_by' => $user->id,
         ];
 
         $this->postJson('/api/occurrences', $payload)
@@ -142,12 +141,14 @@ class OccurrenceTest extends TestCase
             ->assertJsonPath('code', 'OCO-TEST-001')
             ->assertJsonPath('status', 'aberta')
             ->assertJsonPath('occurrence_type.id', $type->id)
-            ->assertJsonPath('region.id', $region->id);
+            ->assertJsonPath('region.id', $region->id)
+            ->assertJsonPath('created_by.id', $user->id);
 
         $this->assertDatabaseHas('occurrences', [
             'code' => 'OCO-TEST-001',
             'title' => 'Ocorrencia criada no teste',
             'status' => 'aberta',
+            'created_by' => $user->id,
         ]);
     }
 

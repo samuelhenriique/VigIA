@@ -37,13 +37,24 @@ export default function Ocorrencias() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-slate-900">
-        Ocorrencias
-      </h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">
+            Ocorrencias
+          </h1>
 
-      <p className="mt-2 text-sm text-slate-600">
-        Listagem de ocorrencias cadastradas no sistema.
-      </p>
+          <p className="mt-2 text-sm text-slate-600">
+            Listagem de ocorrencias cadastradas no sistema.
+          </p>
+        </div>
+
+        <Link
+          to="/ocorrencias/nova"
+          className="inline-flex w-fit items-center rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800"
+        >
+          Nova ocorrencia
+        </Link>
+      </div>
 
       <div className="mt-6 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
