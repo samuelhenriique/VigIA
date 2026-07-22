@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Models\AiPrediction;
 use App\Models\Occurrence;
 use App\Models\OccurrenceType;
 use App\Models\Region;
@@ -63,6 +64,20 @@ class OccurrenceTest extends TestCase
             'created_by' => $user->id,
         ]);
 
+        $olderPrediction = AiPrediction::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'model_name' => 'rules-v1',
+            'predicted_priority' => 'media',
+            'created_at' => now()->subMinute(),
+        ]);
+
+        $newerPrediction = AiPrediction::factory()->create([
+            'occurrence_id' => $occurrence->id,
+            'model_name' => 'sklearn-logistic-regression-v1',
+            'predicted_priority' => 'alta',
+            'created_at' => now(),
+        ]);
+
         $this->getJson("/api/occurrences/{$occurrence->id}")
             ->assertOk()
             ->assertJsonPath('id', $occurrence->id)
@@ -71,7 +86,12 @@ class OccurrenceTest extends TestCase
                 $occurrence->occurrence_type_id
             )
             ->assertJsonPath('region.id', $occurrence->region_id)
-            ->assertJsonPath('created_by.id', $user->id);
+            ->assertJsonPath('created_by.id', $user->id)
+            ->assertJsonCount(2, 'ai_predictions')
+            ->assertJsonPath('ai_predictions.0.id', $newerPrediction->id)
+            ->assertJsonPath('ai_predictions.0.predicted_priority', 'alta')
+            ->assertJsonPath('ai_predictions.1.id', $olderPrediction->id)
+            ->assertJsonPath('ai_predictions.1.predicted_priority', 'media');
     }
 
     public function test_occurrence_can_be_created(): void

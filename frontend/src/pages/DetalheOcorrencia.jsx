@@ -41,6 +41,22 @@ function formatDateTime(value) {
   }).format(date)
 }
 
+function formatPercentage(value) {
+  if (value == null || value === '') {
+    return 'Nao informada'
+  }
+
+  const number = Number(value)
+
+  if (Number.isNaN(number)) {
+    return value
+  }
+
+  return `${new Intl.NumberFormat('pt-BR', {
+    maximumFractionDigits: 2,
+  }).format(number)}%`
+}
+
 export default function DetalheOcorrencia() {
   const { id } = useParams()
 
@@ -282,6 +298,83 @@ export default function DetalheOcorrencia() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="mt-6">
+        <h2 className="text-lg font-semibold text-slate-900">
+          Historico de previsoes da IA
+        </h2>
+
+        {occurrence.ai_predictions?.length > 0 ? (
+          <div className="mt-4 space-y-4">
+            {occurrence.ai_predictions.map((prediction) => (
+              <article
+                key={prediction.id}
+                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Prioridade sugerida
+                    </p>
+                    <p className="mt-1 text-lg font-semibold capitalize text-slate-900">
+                      {prediction.predicted_priority ?? 'Nao definida'}
+                    </p>
+                  </div>
+
+                  <p className="text-sm text-slate-500">
+                    {formatDateTime(prediction.created_at)}
+                  </p>
+                </div>
+
+                <div className="mt-4 grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Modelo
+                    </p>
+                    <p className="mt-1 break-words text-slate-900">
+                      {prediction.model_name ?? 'Nao informado'}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Pontuacao de risco
+                    </p>
+                    <p className="mt-1 text-slate-900">
+                      {formatPercentage(prediction.risk_score)}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Confianca
+                    </p>
+                    <p className="mt-1 text-slate-900">
+                      {formatPercentage(prediction.confidence_score)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 border-t border-slate-100 pt-4">
+                  <p className="text-sm font-medium text-slate-500">
+                    Explicacao
+                  </p>
+                  <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-slate-700">
+                    {prediction.explanation ||
+                      'Nenhuma explicacao foi registrada.'}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm text-slate-600">
+              Esta ocorrencia ainda nao possui previsoes da IA.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )
