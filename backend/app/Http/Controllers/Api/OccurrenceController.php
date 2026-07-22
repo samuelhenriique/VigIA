@@ -50,7 +50,12 @@ class OccurrenceController extends Controller
             'occurrenceType:id,name,default_severity',
             'region:id,name,city,state,risk_level',
             'createdBy:id,name,email',
+
             'aiPredictions' => fn ($query) => $query
+                ->orderByDesc('created_at')
+                ->orderByDesc('id'),
+
+            'alerts' => fn ($query) => $query
                 ->orderByDesc('created_at')
                 ->orderByDesc('id'),
         ])->findOrFail($id);

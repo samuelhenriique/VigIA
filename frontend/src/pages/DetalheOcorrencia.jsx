@@ -24,6 +24,20 @@ function statusClasses(status) {
   )
 }
 
+function alertSeverityClasses(severity) {
+  const classes = {
+    baixo: 'border-blue-200 bg-blue-50 text-blue-700',
+    medio: 'border-amber-200 bg-amber-50 text-amber-700',
+    alto: 'border-orange-200 bg-orange-50 text-orange-700',
+    critico: 'border-red-200 bg-red-50 text-red-700',
+  }
+
+  return (
+    classes[severity] ??
+    'border-slate-200 bg-slate-50 text-slate-700'
+  )
+}
+
 function formatDateTime(value) {
   if (!value) {
     return 'Nao informada'
@@ -372,6 +386,80 @@ export default function DetalheOcorrencia() {
           <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-sm text-slate-600">
               Esta ocorrencia ainda nao possui previsoes da IA.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-6">
+        <h2 className="text-lg font-semibold text-slate-900">
+          Alertas relacionados
+        </h2>
+
+        {occurrence.alerts?.length > 0 ? (
+          <div className="mt-4 space-y-4">
+            {occurrence.alerts.map((alert) => (
+              <article
+                key={alert.id}
+                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-sm text-slate-500">
+                      {formatDateTime(alert.created_at)}
+                    </p>
+
+                    <h3 className="mt-1 text-lg font-semibold text-slate-900">
+                      {alert.title ?? 'Alerta sem titulo'}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span
+                      className={`rounded-full border px-3 py-1 text-xs font-medium capitalize ${alertSeverityClasses(
+                        alert.severity,
+                      )}`}
+                    >
+                      {alert.severity ?? 'Nao informada'}
+                    </span>
+
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium capitalize text-slate-700">
+                      {formatStatus(alert.status)}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="mt-4 whitespace-pre-wrap text-sm leading-6 text-slate-700">
+                  {alert.description ||
+                    'Nenhuma descricao foi informada.'}
+                </p>
+
+                <div className="mt-4 grid gap-4 border-t border-slate-100 pt-4 sm:grid-cols-2">
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Tipo
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">
+                      {formatStatus(alert.type)}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-slate-500">
+                      Gerado por
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">
+                      {alert.generated_by ?? 'Nao informado'}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm text-slate-600">
+              Esta ocorrencia ainda nao possui alertas relacionados.
             </p>
           </div>
         )}
