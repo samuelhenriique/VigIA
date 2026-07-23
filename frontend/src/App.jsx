@@ -10,6 +10,7 @@ import Alertas from './pages/Alertas'
 import DetalheOcorrencia from './pages/DetalheOcorrencia'
 import NovaOcorrencia from './pages/NovaOcorrencia'
 import EditarOcorrencia from './pages/EditarOcorrencia'
+import NovaViatura from './pages/NovaViatura'
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/ocorrencias/nova" element={<NovaOcorrencia />}/>
             <Route path="/ocorrencias/:id" element={<DetalheOcorrencia />}/>
             <Route path="/ocorrencias/:id/editar" element={<EditarOcorrencia />}/>
+            <Route path="/viaturas/nova" element={<NovaViatura />}/>
           </Route>
       </Routes>
     </BrowserRouter>
