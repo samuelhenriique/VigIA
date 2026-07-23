@@ -178,13 +178,22 @@ export default function DetalheOcorrencia() {
           </p>
         </div>
 
-        <span
-          className={`inline-flex w-fit rounded-full border px-3 py-1 text-sm font-medium capitalize ${statusClasses(
-            occurrence.status,
-          )}`}
-        >
-          {formatStatus(occurrence.status)}
-        </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            to={`/ocorrencias/${occurrence.id}/editar`}
+            className="rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800"
+          >
+            Editar ocorrencia
+          </Link>
+
+          <span
+            className={`inline-flex w-fit rounded-full border px-3 py-1 text-sm font-medium capitalize ${statusClasses(
+              occurrence.status,
+            )}`}
+          >
+            {formatStatus(occurrence.status)}
+          </span>
+        </div>
       </div>
 
       <div className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">

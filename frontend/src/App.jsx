@@ -9,6 +9,7 @@ import Mapa from './pages/Mapa'
 import Alertas from './pages/Alertas'
 import DetalheOcorrencia from './pages/DetalheOcorrencia'
 import NovaOcorrencia from './pages/NovaOcorrencia'
+import EditarOcorrencia from './pages/EditarOcorrencia'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/alertas" element={<Alertas />} />
             <Route path="/ocorrencias/nova" element={<NovaOcorrencia />}/>
             <Route path="/ocorrencias/:id" element={<DetalheOcorrencia />}/>
+            <Route path="/ocorrencias/:id/editar" element={<EditarOcorrencia />}/>
           </Route>
       </Routes>
     </BrowserRouter>
