@@ -64,6 +64,7 @@ export default function Viaturas() {
               <th className="px-6 py-3 font-medium">Codigo</th>
               <th className="px-6 py-3 font-medium">Status</th>
               <th className="px-6 py-3 font-medium">Ativa</th>
+              <th className="px-6 py-3 font-medium">Ações</th>
             </tr>
           </thead>
 
@@ -84,6 +85,19 @@ export default function Viaturas() {
 
                 <td className="px-4 py-3 text-slate-700">
                   {vehicle.active ? 'Sim' : 'Nao'}
+                </td>
+
+                <td className="px-4 py-3 text-slate-700">
+                  {vehicle.active ? 'Sim' : 'Nao'}
+                  </td>
+
+                <td className="px-4 py-3">
+                  <Link
+                    to={`/viaturas/${vehicle.id}/editar`}
+                    className="font-medium text-blue-700 hover:text-blue-900"
+                  >
+                    Editar
+                  </Link>
                 </td>
               </tr>
             ))}
