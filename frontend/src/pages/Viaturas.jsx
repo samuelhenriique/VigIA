@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../api/client'
 
 export default function Viaturas() {
@@ -36,13 +37,24 @@ export default function Viaturas() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-slate-900">
-        Viaturas
-      </h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">
+            Viaturas
+          </h1>
 
-      <p className="mt-2 text-sm text-slate-600">
-        Listagem de viaturas cadastradas no sistema.
-      </p>
+          <p className="mt-2 text-sm text-slate-600">
+            Listagem de viaturas cadastradas no sistema.
+          </p>
+        </div>
+
+        <Link
+          to="/viaturas/nova"
+          className="w-fit rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800"
+        >
+          Nova viatura
+        </Link>
+      </div>
 
       <div className="mt-6 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
@@ -52,6 +64,7 @@ export default function Viaturas() {
               <th className="px-6 py-3 font-medium">Codigo</th>
               <th className="px-6 py-3 font-medium">Status</th>
               <th className="px-6 py-3 font-medium">Ativa</th>
+              <th className="px-6 py-3 font-medium">Ações</th>
             </tr>
           </thead>
 
@@ -72,6 +85,19 @@ export default function Viaturas() {
 
                 <td className="px-4 py-3 text-slate-700">
                   {vehicle.active ? 'Sim' : 'Nao'}
+                </td>
+
+                <td className="px-4 py-3 text-slate-700">
+                  {vehicle.active ? 'Sim' : 'Nao'}
+                  </td>
+
+                <td className="px-4 py-3">
+                  <Link
+                    to={`/viaturas/${vehicle.id}/editar`}
+                    className="font-medium text-blue-700 hover:text-blue-900"
+                  >
+                    Editar
+                  </Link>
                 </td>
               </tr>
             ))}
