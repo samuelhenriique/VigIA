@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DispatchController;
 use App\Http\Controllers\Api\OccurrenceController;
 use App\Http\Controllers\Api\OccurrenceTypeController;
 use App\Http\Controllers\Api\RegionController;
@@ -18,6 +19,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('alerts', [AlertController::class, 'index']);
     Route::post('alerts/generate', [AlertController::class, 'generate']);
     Route::get('occurrences/{occurrence}/suggest-vehicle', [OccurrenceController::class, 'suggestVehicle']);
+    Route::post('occurrences/{occurrence}/dispatches', [DispatchController::class, 'store']);
     Route::get('vehicles/available', [VehicleController::class, 'available']);
 
     Route::post('occurrences/{occurrence}/predict-priority', [OccurrenceController::class, 'predictPriority']);

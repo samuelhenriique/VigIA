@@ -92,6 +92,9 @@ export default function Mapa() {
   const [suggestion, setSuggestion] = useState(null)
   const [suggestionLoading, setSuggestionLoading] = useState(false)
   const [suggestionError, setSuggestionError] = useState('')
+  const [dispatchLoading, setDispatchLoading] = useState(false)
+  const [dispatchError, setDispatchError] = useState('')
+  const [dispatchSuccess, setDispatchSuccess] = useState('')
 
   const [filters, setFilters] = useState({
     occurrenceStatus: '',
@@ -187,6 +190,8 @@ export default function Mapa() {
     setSuggestionLoading(true)
     setSuggestionError('')
     setSuggestion(null)
+    setDispatchError('')
+    setDispatchSuccess('')
 
     try {
       const response = await api.get(`/occurrences/${occurrenceId}/suggest-vehicle`)
@@ -196,6 +201,45 @@ export default function Mapa() {
       setSuggestionError('Nao foi possivel sugerir uma viatura para esta ocorrencia.')
     } finally {
       setSuggestionLoading(false)
+    }
+  }
+
+  async function handleConfirmDispatch() {
+    const occurrenceId = suggestion?.occurrence?.id
+    const vehicleId = suggestion?.suggested_vehicle?.id
+
+    if (!occurrenceId || !vehicleId) {
+      setDispatchError(
+        'Nao foi possivel identificar a ocorrencia ou a viatura sugerida.',
+      )
+      return
+    }
+
+    try {
+      setDispatchLoading(true)
+      setDispatchError('')
+      setDispatchSuccess('')
+
+      const response = await api.post(
+        `/occurrences/${occurrenceId}/dispatches`,
+        {
+          vehicle_id: vehicleId,
+        },
+      )
+
+      setDispatchSuccess(
+        response.data.message ??
+          'Despacho confirmado com sucesso.',
+      )
+    } catch (requestError) {
+      console.error(requestError)
+
+      setDispatchError(
+        requestError.response?.data?.message ??
+          'Nao foi possivel confirmar o despacho.',
+      )
+    } finally {
+      setDispatchLoading(false)
     }
   }
 
@@ -507,6 +551,39 @@ export default function Mapa() {
           <p className="mt-3 text-xs text-blue-800">
             {suggestion.criteria}
           </p>
+
+          <div className="mt-4 flex flex-col items-start gap-3 border-t border-blue-200 pt-4">
+            <button
+              type="button"
+              onClick={handleConfirmDispatch}
+              disabled={dispatchLoading || Boolean(dispatchSuccess)}
+              className="rounded-md bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {dispatchLoading
+                ? 'Confirmando despacho...'
+                : dispatchSuccess
+                  ? 'Despacho confirmado'
+                  : 'Confirmar despacho'}
+            </button>
+
+            {dispatchError && (
+              <p
+                role="alert"
+                className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              >
+                {dispatchError}
+              </p>
+            )}
+
+            {dispatchSuccess && (
+              <p
+                role="status"
+                className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+              >
+                {dispatchSuccess}
+              </p>
+            )}
+          </div>
         </section>
       )}
 
