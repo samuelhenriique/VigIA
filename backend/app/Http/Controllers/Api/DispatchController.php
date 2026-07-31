@@ -76,7 +76,7 @@ class DispatchController extends Controller
                     (int) ceil(($distanceKm / 40) * 60),
                 );
 
-                return Dispatch::create([
+                $dispatch = Dispatch::create([
                     'occurrence_id' => $lockedOccurrence->id,
                     'vehicle_id' => $vehicle->id,
                     'assigned_by' => $request->user()->id,
@@ -87,6 +87,16 @@ class DispatchController extends Controller
                     'assigned_at' => now(),
                     'completed_at' => null,
                 ]);
+
+                $lockedOccurrence->update([
+                    'status' => 'em_atendimento',
+                ]);
+
+                $vehicle->update([
+                    'status' => 'em_atendimento',
+                ]);
+
+                return $dispatch;
             },
         );
 

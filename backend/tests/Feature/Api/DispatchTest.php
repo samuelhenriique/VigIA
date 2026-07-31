@@ -85,6 +85,16 @@ class DispatchTest extends TestCase
             'status' => 'confirmado',
         ]);
 
+        $this->assertDatabaseHas('occurrences', [
+            'id' => $occurrence->id,
+            'status' => 'em_atendimento',
+        ]);
+
+        $this->assertDatabaseHas('vehicles', [
+            'id' => $vehicle->id,
+            'status' => 'em_atendimento',
+        ]);
+
         $dispatch = Dispatch::query()->firstOrFail();
 
         $this->assertNotNull($dispatch->assigned_at);
