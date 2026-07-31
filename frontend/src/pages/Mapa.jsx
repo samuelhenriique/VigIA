@@ -227,6 +227,51 @@ export default function Mapa() {
         },
       )
 
+      const confirmedOccurrence = response.data.dispatch?.occurrence
+      const confirmedVehicle = response.data.dispatch?.vehicle
+
+      if (confirmedOccurrence) {
+        setOccurrences((currentOccurrences) =>
+          currentOccurrences.map((occurrence) =>
+            occurrence.id === confirmedOccurrence.id
+              ? { ...occurrence, ...confirmedOccurrence }
+              : occurrence,
+          ),
+        )
+      }
+
+      if (confirmedVehicle) {
+        setVehicles((currentVehicles) =>
+          currentVehicles.map((vehicle) =>
+            vehicle.id === confirmedVehicle.id
+              ? { ...vehicle, ...confirmedVehicle }
+              : vehicle,
+          ),
+        )
+      }
+
+      setSuggestion((currentSuggestion) => {
+        if (!currentSuggestion) {
+          return currentSuggestion
+        }
+
+        return {
+          ...currentSuggestion,
+          occurrence: confirmedOccurrence
+            ? {
+                ...currentSuggestion.occurrence,
+                ...confirmedOccurrence,
+              }
+            : currentSuggestion.occurrence,
+          suggested_vehicle: confirmedVehicle
+            ? {
+                ...currentSuggestion.suggested_vehicle,
+                ...confirmedVehicle,
+              }
+            : currentSuggestion.suggested_vehicle,
+        }
+      })
+
       setDispatchSuccess(
         response.data.message ??
           'Despacho confirmado com sucesso.',

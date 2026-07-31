@@ -425,8 +425,8 @@ Esta sprint deve transformar o uso do sistema em um fluxo mais completo: registr
 | S8-10 | Criar formulario frontend para cadastro e edicao de viaturas. | Concluido |
 | S8-11 | Criar fluxo para confirmar despacho de viatura sugerida. | Concluido |
 | S8-12 | Criar endpoint ou acao para registrar despacho em `dispatches`. | Concluido |
-| S8-13 | Atualizar status da ocorrencia e da viatura apos despacho confirmado. | Pendente |
-| S8-14 | Refletir despacho confirmado no dashboard, listagens e mapa. | Pendente |
+| S8-13 | Atualizar status da ocorrencia e da viatura apos despacho confirmado. | Concluido |
+| S8-14 | Refletir despacho confirmado no dashboard, listagens e mapa. | Concluido |
 | S8-15 | Adicionar mensagens de sucesso, erro e carregamento nas acoes principais. | Pendente |
 | S8-16 | Executar validacao funcional da Sprint 8. | Pendente |
 
