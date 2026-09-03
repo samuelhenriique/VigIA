@@ -1,0 +1,262 @@
+ROTEIRO FALADO - APRESENTAÇÃO DO PROJETO VIGIA
+Projeto Integrador II - Semana 7
+Acadêmico: Samuel Henrique Wenceslau
+Duração aproximada: 9 a 10 minutos
+
+
+COMO USAR ESTE ROTEIRO
+
+- Leia todo o roteiro algumas vezes para entender a sequência.
+- Não tente decorar exatamente cada palavra.
+- Decore principalmente a ideia central de cada parte.
+- Durante a demonstração, fale devagar e mostre a tela relacionada ao assunto.
+- Os textos entre colchetes são orientações e não precisam ser falados.
+
+
+1. ABERTURA - SLIDE 1
+Tempo aproximado: 40 segundos
+
+[Mostre o primeiro slide]
+
+Olá, meu nome é Samuel Henrique Wenceslau e neste vídeo vou apresentar o VigIA, projeto desenvolvido durante o Projeto Integrador II.
+
+O VigIA é uma plataforma web de apoio operacional para a área de segurança pública. A proposta é reunir informações sobre ocorrências, viaturas, regiões e alertas em um único sistema.
+
+Além da organização dessas informações, o projeto utiliza inteligência artificial para sugerir a prioridade de uma ocorrência.
+
+É importante destacar que a inteligência artificial funciona apenas como apoio. A decisão final continua sendo tomada pelo operador responsável.
+
+
+2. APRESENTAÇÃO DO PROBLEMA - SLIDE 2
+Tempo aproximado: 50 segundos
+
+[Passe para o slide sobre o problema]
+
+O problema estudado no projeto está relacionado à dificuldade de transformar diferentes informações em uma visão operacional clara.
+
+Em uma situação real, podem existir informações sobre ocorrências, localização, gravidade, disponibilidade de viaturas e riscos de determinadas regiões.
+
+Quando esses dados estão separados, o acompanhamento se torna mais difícil. Também pode ser complicado identificar rapidamente quais ocorrências precisam de mais atenção.
+
+Por isso, o VigIA foi pensado para centralizar essas informações e apresentá-las de forma simples, permitindo que o operador tenha mais contexto para tomar suas decisões.
+
+
+3. APRESENTAÇÃO DA SOLUÇÃO - SLIDE 3
+Tempo aproximado: 50 segundos
+
+[Passe para o slide sobre a solução]
+
+A solução foi organizada em quatro etapas principais.
+
+A primeira etapa é registrar a ocorrência e sua localização.
+
+A segunda é analisar os dados cadastrados. Nesse momento, a inteligência artificial pode sugerir uma prioridade.
+
+A terceira etapa é visualizar as informações por meio do painel, do mapa e dos indicadores.
+
+A quarta etapa é apoiar o atendimento, apresentando as viaturas e os alertas relacionados ao cenário operacional.
+
+Esse fluxo permite acompanhar uma ocorrência desde o cadastro até a análise das informações que podem ajudar no atendimento.
+
+
+4. ARQUITETURA DO PROJETO - SLIDE 4
+Tempo aproximado: 50 segundos
+
+[Mostre o slide de arquitetura]
+
+O sistema foi dividido em camadas para deixar o projeto mais organizado e facilitar sua manutenção.
+
+Na interface foi utilizado React. Essa parte contém as páginas que o usuário acessa, como login, dashboard, ocorrências, viaturas, mapa e alertas.
+
+No backend foi utilizado Laravel. A API é responsável pela autenticação, pelas validações e pelas principais regras da aplicação.
+
+Os dados são armazenados no PostgreSQL, utilizando também o PostGIS para trabalhar com informações geográficas.
+
+Por fim, existe um serviço em FastAPI responsável pela parte de inteligência artificial e pela sugestão de prioridade.
+
+Assim, cada tecnologia possui uma responsabilidade específica dentro do projeto.
+
+
+5. LOGIN NO SISTEMA
+Tempo aproximado: 30 segundos
+
+[Saia dos slides e abra o sistema no navegador]
+
+Agora vou demonstrar algumas telas do sistema funcionando.
+
+Esta é a tela de login do VigIA. O usuário informa o e-mail e a senha para acessar o painel operacional.
+
+Depois que o login é validado pela API, o sistema recebe um token de autenticação. Esse token é utilizado nas próximas requisições para acessar as áreas protegidas.
+
+[Faça o login]
+
+
+6. DASHBOARD - SLIDE 5 E SISTEMA
+Tempo aproximado: 55 segundos
+
+[Mostre o dashboard]
+
+Depois do login, o usuário é direcionado ao dashboard.
+
+O dashboard apresenta um resumo do ambiente operacional. Nesta demonstração existem 11 ocorrências, 6 viaturas ativas e 3 alertas, sendo que 2 estão abertos.
+
+Também são apresentados gráficos de ocorrências por prioridade, por tipo e por região. Existem ainda gráficos relacionados ao status das viaturas e à severidade dos alertas.
+
+O objetivo dessa tela é permitir uma leitura rápida da situação. Em vez de consultar cada registro individualmente, o operador consegue identificar os principais números e distribuições em uma única página.
+
+
+7. LISTA DE OCORRÊNCIAS
+Tempo aproximado: 45 segundos
+
+[Abra a opção Ocorrências]
+
+Na tela de ocorrências são apresentados os registros cadastrados no sistema.
+
+Para cada ocorrência, podemos visualizar informações como identificador, status, prioridade e uma descrição resumida.
+
+Também existe a opção de cadastrar uma nova ocorrência e de abrir os detalhes de um registro existente.
+
+Todos os dados usados nesta demonstração são fictícios e foram criados apenas para validar o funcionamento do MVP.
+
+[Abra a ocorrência crítica de número 3]
+
+
+8. DETALHE DA OCORRÊNCIA E INTELIGÊNCIA ARTIFICIAL - SLIDE 6
+Tempo aproximado: 1 minuto e 20 segundos
+
+[Mostre os dados da ocorrência]
+
+Nesta página podemos consultar os dados completos da ocorrência.
+
+São apresentados o status, o tipo da ocorrência, a região, a gravidade informada, a localização e as prioridades humana e automática.
+
+Neste exemplo, a ocorrência foi classificada pela inteligência artificial como crítica.
+
+O sistema também registra o histórico das previsões. A previsão apresenta a prioridade sugerida, a pontuação de risco, o nível de confiança, o nome do modelo e uma explicação.
+
+A lógica de previsão tenta utilizar um modelo simples treinado. Caso esse modelo não esteja disponível, o serviço utiliza regras baseadas em termos de risco, gravidade informada e nível de risco da região.
+
+Essa explicação é importante porque permite entender os fatores utilizados na sugestão.
+
+Mesmo assim, a classificação automática não deve ser tratada como uma decisão definitiva. Ela serve como apoio para a análise do operador.
+
+
+9. VIATURAS
+Tempo aproximado: 40 segundos
+
+[Abra a opção Viaturas]
+
+Nesta tela são apresentadas as viaturas cadastradas.
+
+Cada viatura possui um código, um status e a informação de que está ativa ou não no sistema.
+
+Os principais estados são disponível, em atendimento e indisponível.
+
+Essas informações ajudam a visualizar os recursos que poderiam participar de um atendimento. O projeto também possui uma função para sugerir uma viatura disponível para uma ocorrência.
+
+
+10. MAPA OPERACIONAL - SLIDE 7
+Tempo aproximado: 1 minuto
+
+[Abra a opção Mapa]
+
+O mapa operacional reúne as informações geográficas do sistema.
+
+Nele podemos visualizar as ocorrências, as viaturas e as áreas de risco simuladas.
+
+A tela oferece filtros por status da ocorrência, prioridade, tipo, região e status da viatura. Também é possível ativar ou desativar a visualização das áreas de risco.
+
+As cores ajudam na identificação dos diferentes níveis de prioridade e dos estados das viaturas.
+
+O objetivo dessa tela é acrescentar o contexto de localização. Dessa forma, o operador não analisa apenas os dados escritos, mas também consegue perceber a distribuição das ocorrências e dos recursos no mapa.
+
+
+11. ALERTAS - SLIDE 7
+Tempo aproximado: 45 segundos
+
+[Abra a opção Alertas]
+
+Na tela de alertas são apresentados sinais operacionais gerados por regras, pela inteligência artificial e pelos dados simulados.
+
+O MVP apresenta exemplos de alerta de padrão semelhante, prioridade crítica e área de risco.
+
+Cada alerta possui severidade, status, tipo, título, ocorrência relacionada, origem e data de criação.
+
+Também existem filtros que permitem localizar alertas de acordo com o status, a severidade e o tipo.
+
+
+12. KANBAN FINAL - SLIDE 8
+Tempo aproximado: 45 segundos
+
+[Volte para a apresentação e mostre o Kanban]
+
+Este é o Kanban final do projeto.
+
+Entre as atividades concluídas estão o login, a autenticação, o dashboard, o gerenciamento de ocorrências, a integração com a inteligência artificial, as viaturas, o mapa, os alertas e os testes do MVP.
+
+A apresentação e os arquivos estão na etapa de revisão final.
+
+Depois dessa revisão, as atividades restantes são a gravação do vídeo e a publicação do link no ambiente acadêmico.
+
+
+13. LIMITAÇÕES E PRÓXIMOS PASSOS - SLIDE 9
+Tempo aproximado: 1 minuto
+
+[Mostre o último slide]
+
+Como resultado, foi desenvolvido um MVP integrado e demonstrável.
+
+O sistema consegue reunir os dados principais, apresentar indicadores, trabalhar com informações geográficas e fornecer uma sugestão explicável de prioridade.
+
+Entretanto, o projeto possui limitações. Os dados utilizados são simulados e o modelo de inteligência artificial ainda é simples.
+
+Antes de qualquer utilização em um ambiente real, seria necessário ampliar e validar a base de dados, evoluir o modelo de inteligência artificial, reforçar a segurança, implementar mecanismos de auditoria e avaliar os requisitos de privacidade.
+
+Também seria necessário realizar testes em um ambiente controlado e com acompanhamento de profissionais da área.
+
+O ponto mais importante é que o VigIA foi projetado para apoiar o trabalho humano e não para substituir o responsável pela decisão.
+
+
+14. ENCERRAMENTO
+Tempo aproximado: 20 segundos
+
+Com isso, concluo a apresentação do projeto VigIA.
+
+O desenvolvimento permitiu aplicar conhecimentos de frontend, backend, banco de dados, APIs, geolocalização, inteligência artificial e organização de projetos.
+
+Obrigado pela atenção.
+
+
+RESUMO PARA MEMORIZAÇÃO
+
+Se você esquecer alguma parte durante a apresentação, lembre-se desta sequência:
+
+1 - Qual é o problema?
+Dados separados dificultam a visão operacional e a priorização.
+
+2 - Qual é a solução?
+Uma plataforma que reúne ocorrências, viaturas, mapa, alertas e apoio da IA.
+
+3 - Como foi construída?
+React - Laravel - PostgreSQL/PostGIS - FastAPI.
+
+4 - O que deve ser demonstrado?
+Login - dashboard - ocorrências - IA - viaturas - mapa - alertas.
+
+5 - Qual é o principal cuidado?
+A IA apenas sugere. A decisão final é humana.
+
+6 - Qual é o resultado?
+Um MVP integrado, funcional e preparado para demonstração acadêmica.
+
+7 - O que ainda pode evoluir?
+Base de dados - modelo de IA - segurança - auditoria - validação em ambiente controlado.
+
+
+EXERCÍCIO DE ENSAIO
+
+- Primeiro ensaio: leia o roteiro completo acompanhando os slides.
+- Segundo ensaio: tente explicar cada slide usando apenas o resumo para memorização.
+- Terceiro ensaio: grave somente o áudio e confira se ficou entre 9 e 10 minutos.
+- Quarto ensaio: faça a apresentação completa, incluindo a troca entre slides e sistema.
+- Se passar de 10 minutos, reduza os detalhes da arquitetura e das telas de viaturas e alertas.

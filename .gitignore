@@ -40,3 +40,7 @@ backend/auth.json
 
 
 .pytest_cache/
+
+# Generated presentation working files
+.codex-week7/
+*.inspect.ndjson
