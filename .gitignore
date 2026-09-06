@@ -35,3 +35,13 @@ backend/public/build/
 backend/public/hot
 backend/public/storage
 backend/auth.json
+
+# Codex and generated presentation files
+.codex*/
+*.inspect.ndjson
+
+# Personal academic deliverables kept outside Git
+/docs/
+/*.docx
+/*.pptx
+/Roteiro falado*.txt
