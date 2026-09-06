@@ -1,92 +1,61 @@
 # VigIA
 
-Plataforma web inteligente de apoio operacional para centrais de seguranca publica, desenvolvida como Projeto Integrador do curso de Analise e Desenvolvimento de Sistemas.
+MVP acadêmico de apoio operacional para registro, visualização e priorização de ocorrências. O sistema reúne dashboard, viaturas, mapa, alertas e sugestões de prioridade por inteligência artificial.
 
-O VigIA tem como objetivo auxiliar o registro, a visualizacao, a priorizacao e o acompanhamento de ocorrencias policiais em um ambiente academico controlado, utilizando dados simulados e recursos de inteligencia artificial como apoio a decisao.
+> O VigIA utiliza dados simulados. A IA serve apenas como apoio e não substitui a decisão humana.
 
-## Objetivo do MVP
+## Tecnologias
 
-O MVP sera uma plataforma web funcional com:
+- Frontend: React, TailwindCSS, Leaflet e Chart.js.
+- Backend: PHP, Laravel e API REST.
+- IA: Python, FastAPI e Scikit-learn.
+- Banco: PostgreSQL e PostGIS.
 
-- Cadastro e consulta de ocorrencias.
-- Cadastro e consulta de viaturas.
-- Dashboard operacional.
-- Mapa interativo com ocorrencias e viaturas.
-- Sugestao de prioridade da ocorrencia.
-- Sugestao de viatura disponivel mais adequada.
-- Alertas operacionais simples.
-- Dados simulados para validacao academica.
+## Funcionalidades
 
-O sistema nao utiliza dados reais de seguranca publica e nao substitui a decisao humana. As sugestoes geradas pela plataforma devem ser interpretadas apenas como apoio operacional.
+- Autenticação de usuário.
+- Cadastro e consulta de ocorrências e viaturas.
+- Dashboard com indicadores e gráficos.
+- Mapa com ocorrências, viaturas e áreas de risco.
+- Sugestão de prioridade e de viatura.
+- Alertas operacionais.
 
-## Stack Prevista
-
-| Camada | Tecnologias |
-|---|---|
-| Frontend | React, JavaScript, TailwindCSS, Leaflet, Chart.js |
-| Backend | PHP, Laravel, APIs REST |
-| IA | Python, FastAPI, Pandas, NumPy, Scikit-learn |
-| Banco de dados | PostgreSQL, PostGIS |
-| Versionamento | Git e GitHub |
-
-## Estrutura do Projeto
+## Estrutura
 
 ```text
 VigIA/
-  ai-service/
-  backend/
-  database/
-    schema.sql
-    seed.sql
-  docs/
-    api-sprint-2.md
-    configuracao-banco.md
-    modelagem-banco.md
-    requisitos.md
-    sprints.md
-  frontend/
-  README.md
+  ai-service/  Serviço de inteligência artificial
+  backend/     API Laravel
+  database/    Scripts do PostgreSQL/PostGIS
+  frontend/    Interface React
 ```
 
-## Documentacao
+## Requisitos
 
-- [Requisitos](docs/requisitos.md)
-- [Modelagem do banco](docs/modelagem-banco.md)
-- [Configuracao do banco](docs/configuracao-banco.md)
-- [Planejamento de sprints](docs/sprints.md)
-- [Revisao do escopo do MVP](docs/revisao-escopo-mvp.md)
-- [API Sprint 2](docs/api-sprint-2.md)
+- PHP 8.4 e Composer.
+- Node.js e npm.
+- Python 3.12 ou superior.
+- PostgreSQL com PostGIS.
 
-## Banco de Dados
+## Configuração inicial
 
-O banco utilizado no MVP e o PostgreSQL com PostGIS.
+Crie o banco `vigia_db` e execute, na raiz do projeto:
 
-Nome recomendado do banco:
-
-```text
-vigia_db
+```powershell
+psql -U postgres -d vigia_db -f database/schema.sql
+psql -U postgres -d vigia_db -f database/seed.sql
 ```
 
-Scripts principais:
+Configure o backend:
 
-- `database/schema.sql`: cria extensao PostGIS, tabelas, restricoes e indices.
-- `database/seed.sql`: insere dados simulados para testes.
-
-Para configurar o banco manualmente pelo pgAdmin, siga:
-
-```text
-docs/configuracao-banco.md
+```powershell
+cd backend
+composer install
+Copy-Item .env.example .env
+php artisan key:generate
 ```
 
-## Backend Laravel
-
-O backend da Sprint 2 fica no diretorio:
-
-```text
-backend/
-```
-
-Antes de executar, confirme se o arquivo `backend/.env` aponta para o banco local:
+No arquivo `backend/.env`, configure:
 
 ```env
 DB_CONNECTION=pgsql
@@ -94,98 +63,56 @@ DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=vigia_db
 DB_USERNAME=postgres
-DB_PASSWORD=sua_senha_do_postgres
+DB_PASSWORD=sua_senha
+
+AI_SERVICE_URL=http://127.0.0.1:8001
 ```
 
-Para iniciar a API:
+Instale o serviço de IA:
+
+```powershell
+cd ../ai-service
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Instale o frontend:
+
+```powershell
+cd ../frontend
+npm install
+```
+
+## Executando
+
+Mantenha três terminais abertos.
+
+Backend:
 
 ```powershell
 cd backend
-php artisan serve
+C:\php84\php.exe artisan serve --host=127.0.0.1 --port=8000
 ```
 
-URL padrao:
+Serviço de IA:
 
-```text
-http://127.0.0.1:8000
+```powershell
+cd ai-service
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8001
 ```
 
-Usuario inicial:
+Frontend:
+
+```powershell
+cd frontend
+npm run dev -- --host 127.0.0.1 --port 5173
+```
+
+Acesse `http://127.0.0.1:5173`.
+
+## Acesso de demonstração
 
 ```text
 E-mail: admin@vigia.local
 Senha: password
 ```
-
-Endpoints principais:
-
-```text
-POST /api/login
-GET  /api/me
-POST /api/logout
-
-GET    /api/occurrences
-POST   /api/occurrences
-GET    /api/occurrences/{id}
-PUT    /api/occurrences/{id}
-PATCH  /api/occurrences/{id}
-DELETE /api/occurrences/{id}
-
-GET    /api/vehicles
-POST   /api/vehicles
-GET    /api/vehicles/{id}
-PUT    /api/vehicles/{id}
-PATCH  /api/vehicles/{id}
-DELETE /api/vehicles/{id}
-
-GET /api/regions
-GET /api/occurrence-types
-GET /api/dashboard/summary
-```
-
-As rotas principais exigem token Bearer retornado pelo login. Mais detalhes estao em:
-
-```text
-docs/api-sprint-2.md
-```
-
-## Status Atual
-
-Sprint atual:
-
-```text
-Sprint 2 - Backend Laravel
-Status: Concluida
-```
-
-Ja concluido:
-
-- Estrutura inicial de pastas.
-- Documento de requisitos.
-- Modelagem do banco.
-- Banco `vigia_db` criado.
-- PostGIS instalado e ativado.
-- Tabelas criadas com `schema.sql`.
-- Dados simulados inseridos com `seed.sql`.
-- Planejamento de sprints.
-- Revisao do escopo do MVP.
-- Backend Laravel configurado.
-- API conectada ao PostgreSQL.
-- Autenticacao com Laravel Sanctum.
-- CRUD de ocorrencias.
-- CRUD de viaturas.
-- Endpoints de regioes e tipos de ocorrencia.
-- Endpoint de dashboard operacional.
-- Documentacao da API da Sprint 2.
-
-Proximas etapas:
-
-- Criar colecao Postman ou Insomnia para testes manuais.
-- Iniciar Sprint 3 com React.
-- Criar tela de login e integrar frontend com API Laravel.
-
-## Observacoes Academicas
-
-Este projeto e um prototipo academico. A base inicial utiliza apenas dados ficticios e simulados, sem informacoes reais de vitimas, suspeitos, policiais, atendentes, placas, documentos ou enderecos completos.
-
-O uso de inteligencia artificial no VigIA tem finalidade demonstrativa e de apoio a decisao, respeitando principios de supervisao humana, privacidade, seguranca da informacao e LGPD.
