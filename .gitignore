@@ -43,4 +43,10 @@ backend/auth.json
 
 # Generated presentation working files
 .codex-week7/
+.codex-sprint7-logs/
 *.inspect.ndjson
+
+# Personal academic deliverables kept outside Git
+/*.docx
+/*.pptx
+/Roteiro falado*.txt
