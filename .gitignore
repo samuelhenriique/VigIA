@@ -40,3 +40,13 @@ backend/auth.json
 
 
 .pytest_cache/
+
+# Codex and generated presentation files
+.codex*/
+*.inspect.ndjson
+
+# Personal academic deliverables kept outside Git
+/docs/
+/*.docx
+/*.pptx
+/Roteiro falado*.txt
