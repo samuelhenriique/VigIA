@@ -1,0 +1,11 @@
+# Codex and generated presentation files
+.agents/
+.codex/
+.codex*/
+*.inspect.ndjson
+
+# Personal academic deliverables kept outside Git
+/docs/
+/*.docx
+/*.pptx
+/Roteiro falado*.txt
