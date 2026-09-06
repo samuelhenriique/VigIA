@@ -5,7 +5,7 @@ Thumbs.db
 .vscode/
 .zed/
 
-# Codex/local agent metadata
+# Local tool settings
 .agents/
 .codex/
 
@@ -37,16 +37,14 @@ backend/public/build/
 backend/public/hot
 backend/public/storage
 backend/auth.json
-
-
 .pytest_cache/
 
-# Generated presentation working files
+# Temporary presentation files
 .codex-week7/
 .codex-sprint7-logs/
 *.inspect.ndjson
 
-# Personal academic deliverables kept outside Git
+# Academic deliverables kept outside the repository
 /docs/
 /*.docx
 /*.pptx
