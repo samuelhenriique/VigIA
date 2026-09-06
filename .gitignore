@@ -47,6 +47,7 @@ backend/auth.json
 *.inspect.ndjson
 
 # Personal academic deliverables kept outside Git
+/docs/
 /*.docx
 /*.pptx
 /Roteiro falado*.txt
